@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KKM - Laporan Karyawan | Telkomsel</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary: #e2001a;
+      --primary-dark: #c30016;
+      --secondary: #2d3748;
+      --light: #f7fafc;
+      --dark: #1a202c;
+      --gray: #718096;
+      --success: #48bb78;
+      --warning: #ecc94b;
+      --info: #4299e1;
+      --danger: #f56565;
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    .dark-mode {
+      --primary: #e2001a;
+      --primary-dark: #ff3347;
+      --secondary: #e2e8f0;
+      --light: #1a202c;
+      --dark: #f7fafc;
+      --gray: #a0aec0;
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: var(--transition);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light);
+      color: var(--secondary);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2rem;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .dark-mode .navbar {
+      background-color: var(--dark);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-right: 2rem;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .logo span {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+
+    .menu {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: var(--secondary);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .menu a:hover {
+      color: var(--primary);
+    }
+
+    .menu a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    .menu a.active {
+      color: var(--primary);
+      background-color: rgba(226, 0, 26, 0.1);
+    }
+
+    .menu a.active::after {
+      width: 100%;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .toggle-theme {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+
+    .toggle-theme:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .page-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+
+    .dark-mode .page-title {
+      color: var(--light);
+    }
+
+    .stats-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dark-mode .stat-card {
+      background-color: var(--dark);
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background-color: var(--primary);
+    }
+
+    .stat-card h3 {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--gray);
+    }
+
+    .stat-card .big {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .dark-mode .stat-card .big {
+      color: var(--light);
+    }
+
+    .stat-card .trend {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      margin-top: auto;
+    }
+
+    .trend.up {
+      color: var(--success);
+    }
+
+    .trend.down {
+      color: var(--danger);
+    }
+
+    .form-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 1.5rem;
+    }
+
+    .dark-mode .form-container {
+      background-color: var(--dark);
+    }
+
+    .form-container input {
+      padding: 0.8rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      font-size: 1rem;
+      background-color: var(--light);
+      color: var(--secondary);
+    }
+
+    .dark-mode .form-container input {
+      border-color: #4a5568;
+      background-color: #2d3748;
+      color: var(--light);
+    }
+
+    .form-container input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(226, 0, 26, 0.1);
+    }
+
+    .primary {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .primary:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .secondary {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .secondary:hover {
+      background-color: rgba(226, 0, 26, 0.1);
+    }
+
+    .action-bar {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .action-bar input {
+      flex: 1;
+      min-width: 220px;
+      padding: 0.8rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      font-size: 1rem;
+      background-color: var(--light);
+      color: var(--secondary);
+    }
+
+    .dark-mode .action-bar input {
+      border-color: #4a5568;
+      background-color: #2d3748;
+      color: var(--light);
+    }
+
+    .action-bar input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(226, 0, 26, 0.1);
+    }
+
+    .file-input-label {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .file-input-label:hover {
+      background-color: rgba(226, 0, 26, 0.1);
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .table-container {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .dark-mode .table-container {
+      background-color: var(--dark);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .dark-mode th, .dark-mode td {
+      border-color: #4a5568;
+    }
+
+    th {
+      background-color: #f7fafc;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    .dark-mode th {
+      background-color: #2d3748;
+      color: var(--light);
+    }
+
+    tbody tr:hover {
+      background-color: #f7fafc;
+    }
+
+    .dark-mode tbody tr:hover {
+      background-color: #2d3748;
+    }
+
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .placeholder-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray);
+    }
+
+    .dark-mode .placeholder-avatar {
+      background-color: #4a5568;
+      color: var(--light);
+    }
+
+    [contenteditable="true"]:focus {
+      outline: none;
+      background-color: rgba(226, 0, 26, 0.05);
+      border-radius: 4px;
+      padding: 0.2rem;
+    }
+
+    .dark-mode [contenteditable="true"]:focus {
+      background-color: rgba(226, 0, 26, 0.2);
+    }
+
+    .chart-container {
+      background-color: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 2rem;
+    }
+
+    .dark-mode .chart-container {
+      background-color: var(--dark);
+    }
+
+    .chart-container h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dark-mode .chart-container h3 {
+      color: var(--light);
+    }
+
+    .chart-wrapper {
+      height: 360px;
+      position: relative;
+    }
+
+    .clock {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 90;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    .dark-mode .footer {
+      color: var(--light);
+    }
+
+    #toast-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+
+    .toast {
+      background-color: white;
+      color: var(--secondary);
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 4px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      animation: slideIn 0.3s forwards;
+    }
+
+    .dark-mode .toast {
+      background-color: var(--dark);
+      color: var(--light);
+    }
+
+    .toast.success {
+      border-left: 4px solid var(--success);
+    }
+
+    .toast.error {
+      border-left: 4px solid var(--danger);
+    }
+
+    .toast.info {
+      border-left: 4px solid var(--info);
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      
+      .left {
+        flex-direction: column;
+        margin-bottom: 1rem;
+      }
+      
+      .menu {
+        margin-top: 1rem;
+      }
+      
+      .container {
+        padding: 1rem;
+      }
+      
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      
+      .form-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .action-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .action-bar input {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="left">
+      <div class="logo">
+        <img src="Telkomsel.png" alt="Telkomsel Logo"/>
+        <span>Controlling CS</span>
+      </div>
+      <div class="menu">
+        <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="control_ticket.html"><i class="fas fa-ticket-alt"></i> Control Ticket</a>
+        <a href="kkm.html" class="active"><i class="fas fa-clipboard-check"></i> KKM</a>
+        <a href="monitoring.html"><i class="fas fa-chart-line"></i> Monitoring</a>
+        <a href="berita acara.html"><i class="fas fa-chart-line"></i> Berita Acara</a>
+      </div>
+    </div>
+    <div class="actions">
+      <button id="btnTheme" class="toggle-theme" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i> Dark Mode
+      </button>
+      <div class="user-profile" onclick="showUserMenu()">
+        <div class="user-avatar">H</div>
+        <span>Admin</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">Laporan Kinerja Karyawan (KKM)</h1>
+      <div class="date-filter">
+        <i class="fas fa-calendar-alt"></i>
+        <select id="dateRange">
+          <option value="today">Hari Ini</option>
+          <option value="week">Minggu Ini</option>
+          <option value="month" selected>Bulan Ini</option>
+          <option value="quarter">Kuartal Ini</option>
+          <option value="year">Tahun Ini</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="stats-cards">
+      <div class="stat-card">
+        <h3>Total Karyawan</h3>
+        <div class="big" id="totalKaryawan">0</div>
+        <div class="trend up">
+          <i class="fas fa-arrow-up"></i> 5% dari bulan lalu
+        </div>
+      </div>
+      <div class="stat-card">
+        <h3>Rata-rata Pekerjaan</h3>
+        <div class="big" id="avgPekerjaan">0</div>
+        <div class="trend up">
+          <i class="fas fa-arrow-up"></i> 8% dari bulan lalu
+        </div>
+      </div>
+      <div class="stat-card">
+        <h3>Rata-rata Temuan</h3>
+        <div class="big" id="avgTemuan">0</div>
+        <div class="trend down">
+          <i class="fas fa-arrow-down"></i> 3% dari bulan lalu
+        </div>
+      </div>
+      <div class="stat-card">
+        <h3>Rasio Temuan/Pekerjaan</h3>
+        <div class="big" id="rasioTemuan">0%</div>
+        <div class="trend down">
+          <i class="fas fa-arrow-down"></i> 2% dari bulan lalu
+        </div>
+      </div>
+    </div>
+
+    <!-- Form tambah data -->
+    <div class="form-container">
+      <input type="text" id="fotoUrl" placeholder="URL Foto (opsional)" />
+      <input type="text" id="namaKaryawan" placeholder="Nama Karyawan" />
+      <input type="number" id="totalPekerjaan" placeholder="Total Pekerjaan" />
+      <input type="number" id="totalTemuan" placeholder="Total Temuan" />
+      <button class="primary" style="grid-column: 1 / -1;" onclick="tambahKaryawan()">
+        <i class="fas fa-plus"></i> Tambah / Update
+      </button>
+    </div>
+
+    <!-- Search & tindakan -->
+    <div class="action-bar">
+      <input type="text" id="searchInput" placeholder="Cari Karyawan..." onkeyup="searchTable()"/>
+      <button class="secondary" onclick="exportTableToExcel()">
+        <i class="fas fa-file-export"></i> Export Excel
+      </button>
+      <label class="file-input-label">
+        <i class="fas fa-file-import"></i> Import Excel
+        <input type="file" id="importFile" class="file-input" accept=".xlsx,.xls" onchange="importFromExcel(event)"/>
+      </label>
+      <button class="primary" onclick="resetData()">
+        <i class="fas fa-sync-alt"></i> Reset Data
+      </button>
+    </div>
+
+    <!-- Tabel -->
+    <div class="table-container">
+      <table id="kkmTable">
+        <thead>
+          <tr>
+            <th>Foto</th>
+            <th>Nama Karyawan</th>
+            <th>Total Pekerjaan</th>
+            <th>Total Temuan</th>
+            <th>Rasio</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Chart -->
+    <div class="chart-container">
+      <h3>
+        Perbandingan Kinerja Karyawan
+        <span class="more" onclick="showFullScreenChart()">Lihat detail</span>
+      </h3>
+      <div class="chart-wrapper">
+        <canvas id="kkmChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+  <div class="clock" id="clock">Selasa, 12 Des 2023 15:45:30</div>
+  <div class="footer">Design by Rania | © 2023 Telkomsel</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+  <script>
+    // ---- Toggle theme function ----
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      const btn = document.getElementById('btnTheme');
+      if (document.body.classList.contains('dark-mode')) {
+        btn.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+        localStorage.setItem('theme', 'dark');
+        showToast('Mode gelap diaktifkan', 'success');
+      } else {
+        btn.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+        localStorage.setItem('theme', 'light');
+        showToast('Mode terang diaktifkan', 'success');
+      }
+    }
+
+    // Check saved theme
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      document.getElementById('btnTheme').innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+    }
+
+    // ---- Show toast notification ----
+    function showToast(message, type = 'info') {
+      const toastContainer = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      
+      let icon = 'info-circle';
+      if (type === 'success') icon = 'check-circle';
+      if (type === 'error') icon = 'exclamation-circle';
+      
+      toast.innerHTML = `
+        <i class="fas fa-${icon}"></i>
+        <span>${message}</span>
+      `;
+      
+      toastContainer.appendChild(toast);
+      
+      // Remove toast after 5 seconds
+      setTimeout(() => {
+        toast.style.animation = 'slideIn 0.3s reverse forwards';
+        setTimeout(() => {
+          toastContainer.removeChild(toast);
+        }, 300);
+      }, 5000);
+    }
+
+    // ---- Update clock ----
+    function updateClock() {
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const date = now.toLocaleDateString('id-ID', options);
+      const time = now.toLocaleTimeString('id-ID');
+      document.getElementById('clock').textContent = `${date} ${time}`;
+    }
+    
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // ---- Data & LocalStorage ----
+    const LS_KEY = 'kkm_data_v2';
+    let kkmData = JSON.parse(localStorage.getItem(LS_KEY) || '[]');
+
+    // Seed example jika kosong
+    if (kkmData.length === 0) {
+      kkmData = [
+        { foto: 'https://randomuser.me/api/portraits/men/32.jpg', nama: 'Bryan Williams', pekerjaan: 15, temuan: 3 },
+        { foto: 'https://randomuser.me/api/portraits/women/44.jpg', nama: 'Sarah Johnson', pekerjaan: 20, temuan: 5 },
+        { foto: '', nama: 'Michael Brown', pekerjaan: 12, temuan: 2 },
+        { foto: 'https://randomuser.me/api/portraits/men/22.jpg', nama: 'David Miller', pekerjaan: 18, temuan: 4 },
+        { foto: 'https://randomuser.me/api/portraits/women/33.jpg', nama: 'Jennifer Davis', pekerjaan: 22, temuan: 3 }
+      ];
+      saveLS();
+    }
+
+    function saveLS(){ 
+      localStorage.setItem(LS_KEY, JSON.stringify(kkmData));
+      updateStats();
+    }
+
+    // ---- Update statistics ----
+    function updateStats() {
+      document.getElementById('totalKaryawan').textContent = kkmData.length;
+      
+      const totalPekerjaan = kkmData.reduce((sum, item) => sum + item.pekerjaan, 0);
+      const avgPekerjaan = kkmData.length > 0 ? (totalPekerjaan / kkmData.length).toFixed(1) : 0;
+      document.getElementById('avgPekerjaan').textContent = avgPekerjaan;
+      
+      const totalTemuan = kkmData.reduce((sum, item) => sum + item.temuan, 0);
+      const avgTemuan = kkmData.length > 0 ? (totalTemuan / kkmData.length).toFixed(1) : 0;
+      document.getElementById('avgTemuan').textContent = avgTemuan;
+      
+      const rasio = totalPekerjaan > 0 ? ((totalTemuan / totalPekerjaan) * 100).toFixed(1) : 0;
+      document.getElementById('rasioTemuan').textContent = `${rasio}%`;
+    }
+
+    // ---- CRUD Operations ----
+    function renderTable(){
+      const tbody = document.getElementById('tableBody');
+      tbody.innerHTML = '';
+      
+      kkmData.forEach((r, i) => {
+        const tr = document.createElement('tr');
+        const rasio = r.pekerjaan > 0 ? ((r.temuan / r.pekerjaan) * 100).toFixed(1) : 0;
+        
+        tr.innerHTML = `
+          <td>${r.foto ? `<img src="${r.foto}" alt="${r.nama}" class="avatar"/>` : '<div class="placeholder-avatar"><i class="fas fa-user"></i></div>'}</td>
+          <td contenteditable="true" onblur="editCell(${i},'nama',this.innerText)">${r.nama}</td>
+          <td contenteditable="true" onblur="editNumber(${i},'pekerjaan',this.innerText)">${r.pekerjaan}</td>
+          <td contenteditable="true" onblur="editNumber(${i},'temuan',this.innerText)">${r.temuan}</td>
+          <td>${rasio}%</td>
+          <td>
+            <button class="primary" onclick="prefill(${i})"><i class="fas fa-edit"></i></button>
+            <button class="secondary" onclick="hapus(${i})"><i class="fas fa-trash"></i></button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      
+      updateStats();
+      drawChart();
+    }
+
+    function tambahKaryawan(){
+      const foto = document.getElementById('fotoUrl').value.trim();
+      const nama = document.getElementById('namaKaryawan').value.trim();
+      const pekerjaan = Number(document.getElementById('totalPekerjaan').value || 0);
+      const temuan = Number(document.getElementById('totalTemuan').value || 0);
+      
+      if(!nama){ 
+        showToast('Nama wajib diisi', 'error'); 
+        return; 
+      }
+      
+      // Jika nama sudah ada -> update
+      const idx = kkmData.findIndex(x => x.nama.toLowerCase() === nama.toLowerCase());
+      if(idx >= 0){
+        kkmData[idx] = { foto: foto || kkmData[idx].foto, nama, pekerjaan, temuan };
+        showToast(`Data ${nama} berhasil diperbarui`, 'success');
+      } else {
+        kkmData.push({ foto, nama, pekerjaan, temuan });
+        showToast(`Data ${nama} berhasil ditambahkan`, 'success');
+      }
+      
+      saveLS(); 
+      clearForm(); 
+      renderTable();
+    }
+
+    function clearForm(){
+      ['fotoUrl','namaKaryawan','totalPekerjaan','totalTemuan'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+    }
+
+    function prefill(i){
+      const r = kkmData[i];
+      document.getElementById('fotoUrl').value = r.foto || '';
+      document.getElementById('namaKaryawan').value = r.nama;
+      document.getElementById('totalPekerjaan').value = r.pekerjaan;
+      document.getElementById('totalTemuan').value = r.temuan;
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function hapus(i){
+      if(!confirm('Hapus data ini?')) return;
+      const nama = kkmData[i].nama;
+      kkmData.splice(i,1); 
+      saveLS(); 
+      renderTable();
+      showToast(`Data ${nama} berhasil dihapus`, 'success');
+    }
+
+    function editCell(i, key, val){
+      kkmData[i][key] = val.trim(); 
+      saveLS(); 
+      drawChart();
+    }
+    
+    function editNumber(i, key, val){
+      const num = Number(val);
+      if(Number.isNaN(num)){ 
+        showToast('Masukkan angka yang valid', 'error'); 
+        renderTable(); 
+        return; 
+      }
+      kkmData[i][key] = num; 
+      saveLS(); 
+      drawChart();
+    }
+
+    function resetData(){
+      if(!confirm('Reset semua data ke default?')) return;
+      kkmData = [];
+      saveLS();
+      location.reload();
+    }
+
+    // ---- Search Function ----
+    function searchTable() {
+      const input = document.getElementById('searchInput');
+      const filter = input.value.toLowerCase();
+      const tbody = document.getElementById('tableBody');
+      const rows = tbody.getElementsByTagName('tr');
+      
+      for (let i = 0; i < rows.length; i++) {
+        const nameCell = rows[i].getElementsByTagName('td')[1];
+        if (nameCell) {
+          const name = nameCell.textContent || nameCell.innerText;
+          if (name.toLowerCase().indexOf(filter) > -1) {
+            rows[i].style.display = '';
+          } else {
+            rows[i].style.display = 'none';
+          }
+        }
+      }
+    }
+
+    // ---- Import / Export ----
+    function exportTableToExcel(){
+      try {
+        const wb = XLSX.utils.book_new();
+        const ws = XLSX.utils.json_to_sheet(kkmData.map(item => ({
+          'Nama Karyawan': item.nama,
+          'Total Pekerjaan': item.pekerjaan,
+          'Total Temuan': item.temuan,
+          'Foto': item.foto || ''
+        })));
+        
+        XLSX.utils.book_append_sheet(wb, ws, 'KKM Data');
+        XLSX.writeFile(wb, 'KKM_Report.xlsx');
+        showToast('Data berhasil diexport ke Excel', 'success');
+      } catch (error) {
+        showToast('Error saat mengexport data', 'error');
+        console.error(error);
+      }
+    }
+
+    function importFromExcel(evt){
+      const file = evt.target.files[0];
+      if(!file) return;
+      
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const wb = XLSX.read(e.target.result, {type:'binary'});
+          const ws = wb.Sheets[wb.SheetNames[0]];
+          const json = XLSX.utils.sheet_to_json(ws);
+          
+          // Harap header kolom: Nama Karyawan | Total Pekerjaan | Total Temuan | Foto
+          kkmData = json.map(r => ({
+            foto: r.Foto || r.foto || '',
+            nama: r['Nama Karyawan'] || r.nama || '',
+            pekerjaan: Number(r['Total Pekerjaan'] || r.pekerjaan || 0),
+            temuan: Number(r['Total Temuan'] || r.temuan || 0),
+          })).filter(r => r.nama);
+          
+          saveLS(); 
+          renderTable();
+          showToast('Data berhasil diimport dari Excel', 'success');
+        } catch (error) {
+          showToast('Error saat mengimport data', 'error');
+          console.error(error);
+        }
+      };
+      reader.readAsBinaryString(file);
+    }
+
+    // ---- Chart ----
+    let kkmChart;
+    function drawChart(){
+      const ctx = document.getElementById('kkmChart');
+      const labels = kkmData.map(x => x.nama);
+      const pekerjaan = kkmData.map(x => x.pekerjaan);
+      const temuan = kkmData.map(x => x.temuan);
+      
+      if(kkmChart) kkmChart.destroy();
+      
+      kkmChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [
+            { 
+              label: 'Total Pekerjaan', 
+              data: pekerjaan,
+              backgroundColor: '#4299e1'
+            },
+            { 
+              label: 'Total Temuan', 
+              data: temuan,
+              backgroundColor: '#ecc94b'
+            }
+          ]
+        },
+        options: { 
+          responsive: true, 
+          maintainAspectRatio: false, 
+          scales: { 
+            y: { 
+              beginAtZero: true 
+            } 
+          } 
+        }
+      });
+    }
+
+    function showFullScreenChart() {
+      showToast('Membuka chart dalam mode layar penuh', 'info');
+      // Implementasi layar penuh bisa ditambahkan di sini
+    }
+
+    function showUserMenu() {
+      showToast('Menu pengguna dibuka', 'info');
+      // Implementasi menu pengguna bisa ditambahkan di sini
+    }
+
+    // ---- Initialize ----
+    window.onload = function() {
+      renderTable();
+      showToast('Data KKM dimuat dengan sukses', 'success');
+    };
+  </script>
+</body>
+</html>

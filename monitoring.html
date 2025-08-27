@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monitoring Indihome | Telkomsel</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary: #e2001a;
+      --primary-dark: #c30016;
+      --secondary: #2d3748;
+      --light: #f7fafc;
+      --dark: #1a202c;
+      --gray: #718096;
+      --success: #48bb78;
+      --warning: #ecc94b;
+      --info: #4299e1;
+      --danger: #f56565;
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    .dark-mode {
+      --primary: #e2001a;
+      --primary-dark: #ff3347;
+      --secondary: #e2e8f0;
+      --light: #1a202c;
+      --dark: #f7fafc;
+      --gray: #a0aec0;
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: var(--transition);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light);
+      color: var(--secondary);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2rem;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .dark-mode .navbar {
+      background-color: var(--dark);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-right: 2rem;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .logo span {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+
+    .menu {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: var(--secondary);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .menu a:hover {
+      color: var(--primary);
+    }
+
+    .menu a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    .menu a.active {
+      color: var(--primary);
+      background-color: rgba(226, 0, 26, 0.1);
+    }
+
+    .menu a.active::after {
+      width: 100%;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .toggle-theme {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+
+    .toggle-theme:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .page-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+
+    .dark-mode .page-title {
+      color: var(--light);
+    }
+
+    .stats-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dark-mode .stat-card {
+      background-color: var(--dark);
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background-color: var(--primary);
+    }
+
+    .stat-card h3 {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--gray);
+    }
+
+    .stat-card .big {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .dark-mode .stat-card .big {
+      color: var(--light);
+    }
+
+    .stat-card .trend {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      margin-top: auto;
+    }
+
+    .trend.up {
+      color: var(--success);
+    }
+
+    .trend.down {
+      color: var(--danger);
+    }
+
+    .form-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 1.5rem;
+    }
+
+    .dark-mode .form-container {
+      background-color: var(--dark);
+    }
+
+    .form-container label {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--secondary);
+      grid-column: 1 / -1;
+    }
+
+    .dark-mode .form-container label {
+      color: var(--light);
+    }
+
+    .form-container input,
+    .form-container select,
+    .form-container textarea {
+      padding: 0.8rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      font-size: 1rem;
+      background-color: var(--light);
+      color: var(--secondary);
+      grid-column: 1 / -1;
+    }
+
+    .dark-mode .form-container input,
+    .dark-mode .form-container select,
+    .dark-mode .form-container textarea {
+      border-color: #4a5568;
+      background-color: #2d3748;
+      color: var(--light);
+    }
+
+    .form-container input:focus,
+    .form-container select:focus,
+    .form-container textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(226, 0, 26, 0.1);
+    }
+
+    .form-container textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .primary {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      grid-column: 1 / -1;
+    }
+
+    .primary:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .secondary {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .secondary:hover {
+      background-color: rgba(226, 0, 26, 0.1);
+    }
+
+    .action-bar {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .action-bar input,
+    .action-bar select {
+      flex: 1;
+      min-width: 220px;
+      padding: 0.8rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      font-size: 1rem;
+      background-color: var(--light);
+      color: var(--secondary);
+    }
+
+    .dark-mode .action-bar input,
+    .dark-mode .action-bar select {
+      border-color: #4a5568;
+      background-color: #2d3748;
+      color: var(--light);
+    }
+
+    .action-bar input:focus,
+    .action-bar select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(226, 0, 26, 0.1);
+    }
+
+    .file-input-label {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .file-input-label:hover {
+      background-color: rgba(226, 0, 26, 0.1);
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .table-container {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .dark-mode .table-container {
+      background-color: var(--dark);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .dark-mode th, .dark-mode td {
+      border-color: #4a5568;
+    }
+
+    th {
+      background-color: #f7fafc;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    .dark-mode th {
+      background-color: #2d3748;
+      color: var(--light);
+    }
+
+    tbody tr:hover {
+      background-color: #f7fafc;
+    }
+
+    .dark-mode tbody tr:hover {
+      background-color: #2d3748;
+    }
+
+    [contenteditable="true"]:focus {
+      outline: none;
+      background-color: rgba(226, 0, 26, 0.05);
+      border-radius: 4px;
+      padding: 0.2rem;
+    }
+
+    .dark-mode [contenteditable="true"]:focus {
+      background-color: rgba(226, 0, 26, 0.2);
+    }
+
+    .chart-container {
+      background-color: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 2rem;
+    }
+
+    .dark-mode .chart-container {
+      background-color: var(--dark);
+    }
+
+    .chart-container h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dark-mode .chart-container h3 {
+      color: var(--light);
+    }
+
+    .chart-wrapper {
+      height: 360px;
+      position: relative;
+    }
+
+    .clock {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 90;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    .dark-mode .footer {
+      color: var(--light);
+    }
+
+    #toast-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+
+    .toast {
+      background-color: white;
+      color: var(--secondary);
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 4px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      animation: slideIn 0.3s forwards;
+    }
+
+    .dark-mode .toast {
+      background-color: var(--dark);
+      color: var(--light);
+    }
+
+    .toast.success {
+      border-left: 4px solid var(--success);
+    }
+
+    .toast.error {
+      border-left: 4px solid var(--danger);
+    }
+
+    .toast.info {
+      border-left: 4px solid var(--info);
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-AO { background-color: #4299e1; color: white; }
+    .badge-MO { background-color: #48bb78; color: white; }
+    .badge-SO { background-color: #ecc94b; color: #2d3748; }
+    .badge-RO { background-color: #9f7aea; color: white; }
+    .badge-DO { background-color: #ed8936; color: white; }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      
+      .left {
+        flex-direction: column;
+        margin-bottom: 1rem;
+      }
+      
+      .menu {
+        margin-top: 1rem;
+      }
+      
+      .container {
+        padding: 1rem;
+      }
+      
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      
+      .form-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .action-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .action-bar input,
+      .action-bar select {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="left">
+      <div class="logo">
+        <img src="Telkomsel.png" alt="Telkomsel Logo"/>
+        <span>Controlling CS</span>
+      </div>
+      <div class="menu">
+        <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="control_ticket.html"><i class="fas fa-ticket-alt"></i> Control Ticket</a>
+        <a href="kkm.html"><i class="fas fa-clipboard-check"></i> KKM</a>
+        <a href="monitoring.html" class="active"><i class="fas fa-chart-line"></i> Monitoring</a>
+        <a href="berita acara.html" class="active"><i class="fas fa-chart-line"></i> Berita Acara</a>
+      </div>
+    </div>
+    <div class="actions">
+      <button id="btnTheme" class="toggle-theme" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i> Dark Mode
+      </button>
+      <div class="user-profile" onclick="showUserMenu()">
+        <div class="user-avatar">H</div>
+        <span>Admin</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">Monitoring Indihome</h1>
+      <div class="date-filter">
+        <i class="fas fa-calendar-alt"></i>
+        <select id="dateRange">
+          <option value="today">Hari Ini</option>
+          <option value="week">Minggu Ini</option>
+          <option value="month" selected>Bulan Ini</option>
+          <option value="quarter">Kuartal Ini</option>
+          <option value="year">Tahun Ini</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="stats-cards">
+      <div class="stat-card">
+        <h3>Total Laporan</h3>
+        <div class="big" id="totalLaporan">0</div>
+        <div class="trend up">
+          <i class="fas fa-arrow-up"></i> 12% dari bulan lalu
+        </div>
+      </div>
+      <div class="stat-card">
+        <h3>Laporan AO</h3>
+        <div class="big" id="totalAO">0</div>
+        <div class="trend up">
+          <i class="fas fa-arrow-up"></i> 8% dari bulan lalu
+        </div>
+      </div>
+      <div class="stat-card">
+        <h3>Laporan MO</h3>
+        <div class="big" id="totalMO">0</div>
+        <div class="trend down">
+          <i class="fas fa-arrow-down"></i> 5% dari bulan lalu
+        </div>
+      </div>
+      <div class="stat-card">
+        <h3>Rata-rata per CS</h3>
+        <div class="big" id="avgPerCS">0</div>
+        <div class="trend up">
+          <i class="fas fa-arrow-up"></i> 3% dari bulan lalu
+        </div>
+      </div>
+    </div>
+
+    <!-- Form tambah data -->
+    <div class="form-container">
+      <label for="namaCs">Nama CS:</label>
+      <input type="text" id="namaCs" placeholder="Masukkan nama CS" required/>
+      
+      <label for="laporan">Jenis Laporan:</label>
+      <select id="laporan">
+        <option value="AO">AO - Aktivasi Order</option>
+        <option value="MO">MO - Modifikasi Order</option>
+        <option value="SO">SO - Suspend Order</option>
+        <option value="RO">RO - Resume Order</option>
+        <option value="DO">DO - Deactived Order</option>
+      </select>
+      
+      <label for="masalah">Masalah:</label>
+      <input type="text" id="masalah" placeholder="Jelaskan masalahnya" required/>
+      
+      <label for="catatan">Catatan:</label>
+      <textarea id="catatan" placeholder="Tambahkan catatan (opsional)"></textarea>
+      
+      <button class="primary" onclick="tambahLaporan()">
+        <i class="fas fa-plus"></i> Tambah Laporan
+      </button>
+    </div>
+
+    <!-- Search & tindakan -->
+    <div class="action-bar">
+      <input type="text" id="searchMonitoring" placeholder="Cari Nama CS atau Masalah..." onkeyup="searchTable()"/>
+      <select id="filterJenis" onchange="applyFilter()">
+        <option value="">Semua Jenis Laporan</option>
+        <option value="AO">AO - Aktivasi Order</option>
+        <option value="MO">MO - Modifikasi Order</option>
+        <option value="SO">SO - Suspend Order</option>
+        <option value="RO">RO - Resume Order</option>
+        <option value="DO">DO - Deactived Order</option>
+      </select>
+      <button class="secondary" onclick="exportTableToExcel()">
+        <i class="fas fa-file-export"></i> Export Excel
+      </button>
+      <label class="file-input-label">
+        <i class="fas fa-file-import"></i> Import Excel
+        <input type="file" id="importMonitoring" class="file-input" accept=".xlsx,.xls" onchange="importMonitoringExcel(event)"/>
+      </label>
+      <button class="primary" onclick="resetMonitoring()">
+        <i class="fas fa-sync-alt"></i> Reset Data
+      </button>
+    </div>
+
+    <!-- Tabel -->
+    <div class="table-container">
+      <table id="monitoringTable">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Nama CS</th>
+            <th>Jenis Laporan</th>
+            <th>Masalah</th>
+            <th>Catatan</th>
+            <th>Tanggal</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="laporanList"></tbody>
+      </table>
+    </div>
+
+    <!-- Chart -->
+    <div class="chart-container">
+      <h3>
+        Distribusi Jenis Laporan
+        <span class="more" onclick="showFullScreenChart()">Lihat detail</span>
+      </h3>
+      <div class="chart-wrapper">
+        <canvas id="monitoringChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+  <div class="clock" id="clock">Selasa, 12 Des 2023 15:45:30</div>
+  <div class="footer">Design by Rania | © 2023 Telkomsel</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+  <script>
+    // ---- Toggle theme function ----
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      const btn = document.getElementById('btnTheme');
+      if (document.body.classList.contains('dark-mode')) {
+        btn.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+        localStorage.setItem('theme', 'dark');
+        showToast('Mode gelap diaktifkan', 'success');
+      } else {
+        btn.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+        localStorage.setItem('theme', 'light');
+        showToast('Mode terang diaktifkan', 'success');
+      }
+    }
+
+    // Check saved theme
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      document.getElementById('btnTheme').innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+    }
+
+    // ---- Show toast notification ----
+    function showToast(message, type = 'info') {
+      const toastContainer = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      
+      let icon = 'info-circle';
+      if (type === 'success') icon = 'check-circle';
+      if (type === 'error') icon = 'exclamation-circle';
+      
+      toast.innerHTML = `
+        <i class="fas fa-${icon}"></i>
+        <span>${message}</span>
+      `;
+      
+      toastContainer.appendChild(toast);
+      
+      // Remove toast after 5 seconds
+      setTimeout(() => {
+        toast.style.animation = 'slideIn 0.3s reverse forwards';
+        setTimeout(() => {
+          toastContainer.removeChild(toast);
+        }, 300);
+      }, 5000);
+    }
+
+    // ---- Update clock ----
+    function updateClock() {
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const date = now.toLocaleDateString('id-ID', options);
+      const time = now.toLocaleTimeString('id-ID');
+      document.getElementById('clock').textContent = `${date} ${time}`;
+    }
+    
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // ---- Data & LocalStorage ----
+    const LS_KEY_MON = 'monitoring_data_v2';
+    let dataMon = JSON.parse(localStorage.getItem(LS_KEY_MON) || '[]');
+
+    // Seed example jika kosong
+    if (dataMon.length === 0) {
+      dataMon = [
+        { nama: 'Andi', jenis: 'AO', masalah: 'Kendala aktivasi', catatan: 'Follow up 10:00', tanggal: new Date().toISOString().split('T')[0] },
+        { nama: 'Budi', jenis: 'MO', masalah: 'Migrasi gagal', catatan: 'Eskalasikan', tanggal: new Date().toISOString().split('T')[0] },
+        { nama: 'Citra', jenis: 'SO', masalah: 'Status order pending', catatan: 'Tunggu verifikasi', tanggal: new Date().toISOString().split('T')[0] }
+      ];
+      saveMon();
+    }
+
+    function saveMon(){ 
+      localStorage.setItem(LS_KEY_MON, JSON.stringify(dataMon));
+      updateStats();
+    }
+
+    // ---- Update statistics ----
+    function updateStats() {
+      document.getElementById('totalLaporan').textContent = dataMon.length;
+      
+      const totalAO = dataMon.filter(item => item.jenis === 'AO').length;
+      document.getElementById('totalAO').textContent = totalAO;
+      
+      const totalMO = dataMon.filter(item => item.jenis === 'MO').length;
+      document.getElementById('totalMO').textContent = totalMO;
+      
+      // Hitung rata-rata laporan per CS
+      const csCount = {};
+      dataMon.forEach(item => {
+        csCount[item.nama] = (csCount[item.nama] || 0) + 1;
+      });
+      
+      const avgPerCS = Object.keys(csCount).length > 0 
+        ? (dataMon.length / Object.keys(csCount).length).toFixed(1) 
+        : 0;
+      document.getElementById('avgPerCS').textContent = avgPerCS;
+    }
+
+    // ---- CRUD Operations ----
+    function renderMon(){
+      const tbody = document.getElementById('laporanList');
+      tbody.innerHTML = '';
+      const filter = document.getElementById('filterJenis').value;
+      const searchText = document.getElementById('searchMonitoring').value.toLowerCase();
+      
+      const rows = dataMon
+        .map((r, idx) => ({ ...r, no: idx + 1 }))
+        .filter(r => {
+          const matchesFilter = !filter || r.jenis === filter;
+          const matchesSearch = !searchText || 
+            r.nama.toLowerCase().includes(searchText) || 
+            r.masalah.toLowerCase().includes(searchText) ||
+            (r.catatan && r.catatan.toLowerCase().includes(searchText));
+          return matchesFilter && matchesSearch;
+        });
+
+      rows.forEach((r, i) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${r.no}</td>
+          <td contenteditable="true" onblur="editMon(${r.no-1},'nama',this.innerText)">${r.nama}</td>
+          <td>
+            <select onchange="editMon(${r.no-1},'jenis',this.value)" class="badge badge-${r.jenis}">
+              <option value="AO" ${r.jenis==='AO'?'selected':''}>AO - Aktivasi Order</option>
+              <option value="MO" ${r.jenis==='MO'?'selected':''}>MO - Modifikasi Order</option>
+              <option value="SO" ${r.jenis==='SO'?'selected':''}>SO - Suspend Order</option>
+              <option value="RO" ${r.jenis==='RO'?'selected':''}>RO - Resume Order</option>
+              <option value="DO" ${r.jenis==='DO'?'selected':''}>DO - Deactived Order</option>
+            </select>
+          </td>
+          <td contenteditable="true" onblur="editMon(${r.no-1},'masalah',this.innerText)">${r.masalah}</td>
+          <td contenteditable="true" onblur="editMon(${r.no-1},'catatan',this.innerText)">${r.catatan || '-'}</td>
+          <td>${formatDate(r.tanggal)}</td>
+          <td>
+            <button class="primary" onclick="prefillMon(${r.no-1})"><i class="fas fa-edit"></i></button>
+            <button class="secondary" onclick="hapusMon(${r.no-1})"><i class="fas fa-trash"></i></button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      
+      drawMonChart();
+    }
+
+    function formatDate(dateString) {
+      if (!dateString) return '-';
+      const date = new Date(dateString);
+      return date.toLocaleDateString('id-ID', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      });
+    }
+
+    function tambahLaporan(){
+      const nama = document.getElementById('namaCs').value.trim();
+      const jenis = document.getElementById('laporan').value;
+      const masalah = document.getElementById('masalah').value.trim();
+      const catatan = document.getElementById('catatan').value.trim();
+      
+      if(!nama || !masalah){ 
+        showToast('Nama dan Masalah wajib diisi', 'error'); 
+        return; 
+      }
+      
+      dataMon.push({ 
+        nama, 
+        jenis, 
+        masalah, 
+        catatan,
+        tanggal: new Date().toISOString().split('T')[0]
+      });
+      
+      saveMon(); 
+      clearMonForm(); 
+      renderMon();
+      showToast('Laporan berhasil ditambahkan', 'success');
+    }
+
+    function clearMonForm(){
+      document.getElementById('namaCs').value = '';
+      document.getElementById('laporan').value = 'AO';
+      document.getElementById('masalah').value = '';
+      document.getElementById('catatan').value = '';
+    }
+
+    function prefillMon(i){
+      const r = dataMon[i];
+      document.getElementById('namaCs').value = r.nama;
+      document.getElementById('laporan').value = r.jenis;
+      document.getElementById('masalah').value = r.masalah;
+      document.getElementById('catatan').value = r.catatan || '';
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function hapusMon(i){
+      if(!confirm('Hapus laporan ini?')) return;
+      const nama = dataMon[i].nama;
+      dataMon.splice(i,1); 
+      saveMon(); 
+      renderMon();
+      showToast(`Laporan ${nama} berhasil dihapus`, 'success');
+    }
+
+    function editMon(i, key, val){
+      dataMon[i][key] = val;
+      saveMon(); 
+      drawMonChart();
+    }
+
+    function applyFilter(){ 
+      renderMon(); 
+    }
+
+    function searchTable() {
+      renderMon();
+    }
+
+    function resetMonitoring(){
+      if(!confirm('Reset semua data monitoring?')) return;
+      dataMon = []; 
+      saveMon(); 
+      location.reload();
+    }
+
+    // ---- Import / Export ----
+    function exportTableToExcel(){
+      try {
+        const wb = XLSX.utils.book_new();
+        const ws = XLSX.utils.json_to_sheet(dataMon.map(item => ({
+          'Nama CS': item.nama,
+          'Jenis Laporan': item.jenis,
+          'Masalah': item.masalah,
+          'Catatan': item.catatan || '',
+          'Tanggal': item.tanggal || ''
+        })));
+        
+        XLSX.utils.book_append_sheet(wb, ws, 'Monitoring Data');
+        XLSX.writeFile(wb, 'Monitoring_Report.xlsx');
+        showToast('Data berhasil diexport ke Excel', 'success');
+      } catch (error) {
+        showToast('Error saat mengexport data', 'error');
+        console.error(error);
+      }
+    }
+
+    function importMonitoringExcel(evt){
+      const file = evt.target.files[0];
+      if(!file) return;
+      
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const wb = XLSX.read(e.target.result, {type:'binary'});
+          const ws = wb.Sheets[wb.SheetNames[0]];
+          const json = XLSX.utils.sheet_to_json(ws);
+          
+          // Harap header kolom: Nama CS | Jenis Laporan | Masalah | Catatan | Tanggal
+          dataMon = json.map(r => ({
+            nama: r['Nama CS'] || r.nama || '',
+            jenis: r['Jenis Laporan'] || r.jenis || 'AO',
+            masalah: r.Masalah || r.masalah || '',
+            catatan: r.Catatan || r.catatan || '',
+            tanggal: r.Tanggal || r.tanggal || new Date().toISOString().split('T')[0]
+          })).filter(r => r.nama && r.masalah);
+          
+          saveMon(); 
+          renderMon();
+          showToast('Data berhasil diimport dari Excel', 'success');
+        } catch (error) {
+          showToast('Error saat mengimport data', 'error');
+          console.error(error);
+        }
+      };
+      reader.readAsBinaryString(file);
+    }
+
+    // ---- Chart ----
+    let monChart;
+    function drawMonChart(){
+      const ctx = document.getElementById('monitoringChart');
+      const counts = { AO:0, MO:0, SO:0, RO:0, DO:0 };
+      dataMon.forEach(r => { 
+        counts[r.jenis] = (counts[r.jenis] || 0) + 1; 
+      });
+      
+      const labels = [
+        'AO - Aktivasi Order', 
+        'MO - Modifikasi Order', 
+        'SO - Suspend Order', 
+        'RO - Resume Order', 
+        'DO - Deactived Order'
+      ];
+      
+      const data = [
+        counts.AO || 0,
+        counts.MO || 0,
+        counts.SO || 0,
+        counts.RO || 0,
+        counts.DO || 0
+      ];
+      
+            const backgroundColors = [
+        '#4299e1',
+        '#48bb78',
+        '#ecc94b',
+        '#9f7aea',
+        '#ed8936'
+      ];
+      
+      if (monChart) {
+        monChart.data.labels = labels;
+        monChart.data.datasets[0].data = data;
+        monChart.update();
+      } else {
+        monChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: labels,
+            datasets: [{
+              data: data,
+              backgroundColor: backgroundColors,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: {
+                  color: getComputedStyle(document.body).getPropertyValue('--secondary')
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    const label = context.label || '';
+                    const value = context.raw || 0;
+                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                    const percentage = Math.round((value / total) * 100);
+                    return `${label}: ${value} (${percentage}%)`;
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+    }
+
+    function showFullScreenChart() {
+      // Membuat modal untuk menampilkan chart dalam ukuran penuh
+      const modal = document.createElement('div');
+      modal.style.position = 'fixed';
+      modal.style.top = '0';
+      modal.style.left = '0';
+      modal.style.width = '100%';
+      modal.style.height = '100%';
+      modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
+      modal.style.display = 'flex';
+      modal.style.flexDirection = 'column';
+      modal.style.alignItems = 'center';
+      modal.style.justifyContent = 'center';
+      modal.style.zIndex = '1000';
+      
+      const chartContainer = document.createElement('div');
+      chartContainer.style.width = '80%';
+      chartContainer.style.height = '80%';
+      chartContainer.style.backgroundColor = getComputedStyle(document.body).getPropertyValue('--light');
+      chartContainer.style.padding = '20px';
+      chartContainer.style.borderRadius = '8px';
+      chartContainer.style.position = 'relative';
+      
+      const closeBtn = document.createElement('button');
+      closeBtn.innerHTML = '&times;';
+      closeBtn.style.position = 'absolute';
+      closeBtn.style.top = '10px';
+      closeBtn.style.right = '10px';
+      closeBtn.style.background = 'none';
+      closeBtn.style.border = 'none';
+      closeBtn.style.fontSize = '24px';
+      closeBtn.style.color = getComputedStyle(document.body).getPropertyValue('--secondary');
+      closeBtn.style.cursor = 'pointer';
+      closeBtn.onclick = () => document.body.removeChild(modal);
+      
+      const canvas = document.createElement('canvas');
+      canvas.id = 'fullScreenChart';
+      chartContainer.appendChild(canvas);
+      chartContainer.appendChild(closeBtn);
+      modal.appendChild(chartContainer);
+      document.body.appendChild(modal);
+      
+      // Menggambar chart di modal
+      const counts = { AO:0, MO:0, SO:0, RO:0, DO:0 };
+      dataMon.forEach(r => { 
+        counts[r.jenis] = (counts[r.jenis] || 0) + 1; 
+      });
+      
+      const labels = [
+        'AO - Aktivasi Order', 
+        'MO - Modifikasi Order', 
+        'SO - Suspend Order', 
+        'RO - Resume Order', 
+        'DO - Deactived Order'
+      ];
+      
+      const data = [
+        counts.AO || 0,
+        counts.MO || 0,
+        counts.SO || 0,
+        counts.RO || 0,
+        counts.DO || 0
+      ];
+      
+      const backgroundColors = [
+        '#4299e1',
+        '#48bb78',
+        '#ecc94b',
+        '#9f7aea',
+        '#ed8936'
+      ];
+      
+      new Chart(canvas, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Jumlah Laporan',
+            data: data,
+            backgroundColor: backgroundColors,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                precision: 0
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            },
+            title: {
+              display: true,
+              text: 'Distribusi Jenis Laporan',
+              font: {
+                size: 18
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // ---- Initialize ----
+    document.addEventListener('DOMContentLoaded', function() {
+      updateStats();
+      renderMon();
+      
+      // Event listener untuk form input
+      document.getElementById('namaCs').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') tambahLaporan();
+      });
+      
+      document.getElementById('masalah').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') tambahLaporan();
+      });
+    });
+  </script>
+</body>
+</html>
+

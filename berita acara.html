@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BA Reaktivasi Prepaid Post Aging Quarantine</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        .form-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .file-upload {
+            background-color: #e8f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 2px dashed #3498db;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: inline-block;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .btn-generate {
+            background-color: #27ae60;
+        }
+        .btn-generate:hover {
+            background-color: #219653;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .preview-container {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: white;
+        }
+        #pdfPreview {
+            width: 100%;
+            min-height: 500px;
+            border: 1px solid #ddd;
+        }
+        .required::after {
+            content: " *";
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BA Reaktivasi Prepaid Post Aging Quarantine</h1>
+        
+        <form id="reactivationForm">
+            <div class="form-section">
+                <h2>Informasi Pelanggan</h2>
+                <div class="form-group">
+                    <label for="msisdn" class="required">MSISDN</label>
+                    <input type="text" id="msisdn" name="msisdn" required>
+                </div>
+                <div class="form-group">
+                    <label for="status" class="required">Status MSISDN</label>
+                    <input type="text" id="status" name="status" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerName" class="required">Nama Pelanggan</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="nik" class="required">NIK</label>
+                    <input type="text" id="nik" name="nik" required>
+                </div>
+                <div class="form-group">
+                    <label for="ticketId" class="required">Nomor ID Tiket</label>
+                    <input type="text" id="ticketId" name="ticketId" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Unggah Dokumen</h2>
+                
+                <div class="form-group">
+                    <label for="ktpFile" class="required">KTP</label>
+                    <div class="file-upload">
+                        <input type="file" id="ktpFile" name="ktpFile" accept="image/*,.pdf" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="scanKtpFile" class="required">Scan KTP Reader</label>
+                    <div class="file-upload">
+                        <input type="file" id="scanKtpFile" name="scanKtpFile" accept="image/*,.pdf" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ottFile" class="required">Aplikasi OTT 1</label>
+                    <div class="file-upload">
+                        <input type="file" id="ottFile" name="ottFile" accept="image/*,.pdf" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="silkcardFile" class="required">Silkcard | QR Code</label>
+                    <div class="file-upload">
+                        <input type="file" id="silkcardFile" name="silkcardFile" accept="image/*,.pdf" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="formFile" class="required">Form Layanan</label>
+                    <div class="file-upload">
+                        <input type="file" id="formFile" name="formFile" accept="image/*,.pdf" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button type="button" id="previewBtn" class="btn">Preview</button>
+                <button type="button" id="generatePdfBtn" class="btn btn-generate">Generate PDF</button>
+            </div>
+        </form>
+
+        <div class="preview-container" id="previewContainer">
+            <h2>Preview Dokumen</h2>
+            <div id="pdfPreview"></div>
+            <div class="button-container">
+                <button type="button" id="downloadPdfBtn" class="btn btn-generate">Download PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Inisialisasi jsPDF
+        const { jsPDF } = window.jspdf;
+
+        document.getElementById('previewBtn').addEventListener('click', function() {
+            if (validateForm()) {
+                generatePDFPreview();
+                document.getElementById('previewContainer').style.display = 'block';
+            }
+        });
+
+        document.getElementById('generatePdfBtn').addEventListener('click', function() {
+            if (validateForm()) {
+                generatePDF(true);
+            }
+        });
+
+        document.getElementById('downloadPdfBtn').addEventListener('click', function() {
+            generatePDF(true);
+        });
+
+        function validateForm() {
+            const requiredFields = document.querySelectorAll('input[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    isValid = false;
+                    field.style.borderColor = 'red';
+                } else {
+                    field.style.borderColor = '#ddd';
+                }
+            });
+            
+            if (!isValid) {
+                alert('Harap isi semua field yang wajib diisi!');
+            }
+            
+            return isValid;
+        }
+
+        function generatePDFPreview() {
+            const previewElement = document.getElementById('pdfPreview');
+            previewElement.innerHTML = '';
+            
+            // Membuat konten preview
+            const content = document.createElement('div');
+            content.style.padding = '20px';
+            content.style.fontFamily = 'Arial, sans-serif';
+            
+            content.innerHTML = `
+                <h1 style="text-align: center; color: #2c3e50;">BA Reaktivasi Prepaid Post Aging Quarantine</h1>
+                <hr>
+                <h2>Informasi Pelanggan</h2>
+                <p><strong>MSISDN:</strong> ${document.getElementById('msisdn').value}</p>
+                <p><strong>Status MSISDN:</strong> ${document.getElementById('status').value}</p>
+                <p><strong>Nama Pelanggan:</strong> ${document.getElementById('customerName').value}</p>
+                <p><strong>NIK:</strong> ${document.getElementById('nik').value}</p>
+                <p><strong>Nomor ID Tiket:</strong> ${document.getElementById('ticketId').value}</p>
+                
+                <h2>Dokumen Terlampir</h2>
+                <ul>
+                    <li>KTP: ${document.getElementById('ktpFile').files[0]?.name || 'Tidak ada file'}</li>
+                    <li>Scan KTP Reader: ${document.getElementById('scanKtpFile').files[0]?.name || 'Tidak ada file'}</li>
+                    <li>Aplikasi OTT 1: ${document.getElementById('ottFile').files[0]?.name || 'Tidak ada file'}</li>
+                    <li>Silkcard | QR Code: ${document.getElementById('silkcardFile').files[0]?.name || 'Tidak ada file'}</li>
+                    <li>Form Layanan: ${document.getElementById('formFile').files[0]?.name || 'Tidak ada file'}</li>
+                </ul>
+                
+                <p style="margin-top: 30px; text-align: right;">
+                    <strong>Tanggal:</strong> ${new Date().toLocaleDateString('id-ID')}
+                </p>
+            `;
+            
+            previewElement.appendChild(content);
+        }
+
+        function generatePDF(download = false) {
+            const doc = new jsPDF();
+            
+            // Judul
+            doc.setFontSize(18);
+            doc.setTextColor(40, 40, 40);
+            doc.text('BA Reaktivasi Prepaid Post Aging Quarantine', 105, 20, { align: 'center' });
+            
+            // Garis pemisah
+            doc.setDrawColor(200, 200, 200);
+            doc.line(20, 25, 190, 25);
+            
+            // Informasi pelanggan
+            doc.setFontSize(14);
+            doc.setTextColor(30, 30, 30);
+            doc.text('Informasi Pelanggan', 20, 35);
+            
+            doc.setFontSize(12);
+            doc.setTextColor(80, 80, 80);
+            doc.text(`MSISDN: ${document.getElementById('msisdn').value}`, 20, 45);
+            doc.text(`Status MSISDN: ${document.getElementById('status').value}`, 20, 55);
+            doc.text(`Nama Pelanggan: ${document.getElementById('customerName').value}`, 20, 65);
+            doc.text(`NIK: ${document.getElementById('nik').value}`, 20, 75);
+            doc.text(`Nomor ID Tiket: ${document.getElementById('ticketId').value}`, 20, 85);
+            
+            // Dokumen terlampir
+            doc.setFontSize(14);
+            doc.setTextColor(30, 30, 30);
+            doc.text('Dokumen Terlampir', 20, 100);
+            
+            doc.setFontSize(12);
+            doc.setTextColor(80, 80, 80);
+            doc.text(`KTP: ${document.getElementById('ktpFile').files[0]?.name || 'Tidak ada file'}`, 20, 110);
+            doc.text(`Scan KTP Reader: ${document.getElementById('scanKtpFile').files[0]?.name || 'Tidak ada file'}`, 20, 120);
+            doc.text(`Aplikasi OTT 1: ${document.getElementById('ottFile').files[0]?.name || 'Tidak ada file'}`, 20, 130);
+            doc.text(`Silkcard | QR Code: ${document.getElementById('silkcardFile').files[0]?.name || 'Tidak ada file'}`, 20, 140);
+            doc.text(`Form Layanan: ${document.getElementById('formFile').files[0]?.name || 'Tidak ada file'}`, 20, 150);
+            
+            // Tanggal
+            doc.setTextColor(100, 100, 100);
+            doc.text(`Tanggal: ${new Date().toLocaleDateString('id-ID')}`, 160, 270, { align: 'right' });
+            
+            if (download) {
+                doc.save('BA_Reaktivasi_Prepaid.pdf');
+            } else {
+                const pdfData = doc.output('datauristring');
+                document.getElementById('pdfPreview').innerHTML = `<iframe width="100%" height="500px" src="${pdfData}"></iframe>`;
+            }
+        }
+    </script>
+</body>
+</html>
