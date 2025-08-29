@@ -255,11 +255,6 @@
         <a href="#" data-page="ba" role="tab"><i class="fa-solid fa-file-lines"></i> Berita Acara</a>
       </div>
       <button id="btnTheme" class="btn-theme" type="button" aria-pressed="false"><i class="fa-solid fa-moon"></i> <span>Dark Mode</span></button>
-      <div class="user" role="button" aria-haspopup="menu" aria-expanded="false" onclick="showUserMenu()">
-        <div class="avatar" aria-hidden="true">H</div>
-        <span>Admin</span>
-        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-      </div>
     </div>
   </nav>
 
@@ -363,17 +358,17 @@
       <div class="container"><h1 id="title-monitoring" class="page-title">Monitoring</h1><p>Halaman Monitoring akan ditampilkan di sini.</p></div>
     </section>
 
-    <!-- BERITA ACARA -->
+<!-- BERITA ACARA -->
     <section id="ba" class="page" aria-labelledby="title-ba">
       <div class="container">
         <div class="form-wrap">
-          <h1 id="title-ba" class="form-title">BA Adjusment Tagihan</h1>
+          <h1 id="title-ba" class="form-title">Berita Acara Adjusment Tagihan</h1>
 
           <form id="reactivationForm" novalidate>
             <div class="form-section">
               <h2>Informasi Pelanggan</h2>
-              <div class="form-group"><label class="label required" for="msisdn">MSISDN</label><input type="tel" id="msisdn" name="msisdn" class="input" inputmode="numeric" pattern="^\d{9,15}$" placeholder="08xxxxxxxxxx" required/></div>
-              <div class="form-group"><label class="label required" for="status">Status MSISDN</label><input type="text" id="status" name="status" class="input" required/></div>
+              <div class="form-group"><label class="label required" for="msisdn">No. Indihome</label><input type="tel" id="msisdn" name="msisdn" class="input" inputmode="numeric" pattern="^\d{9,15}$" placeholder="152xxxxxxxx" required/></div>
+              <div class="form-group"><label class="label required" for="status">MSISDN</label><input type="text" id="status" name="status" class="input" required/></div>
               <div class="form-group"><label class="label required" for="customerName">Nama Pelanggan</label><input type="text" id="customerName" name="customerName" class="input" required/></div>
               <div class="form-group"><label class="label required" for="nik">NIK</label><input type="text" id="nik" name="nik" class="input" inputmode="numeric" pattern="^\d{16}$" placeholder="16 digit" required/></div>
               <div class="form-group"><label class="label required" for="ticketId">Nomor ID Tiket</label><input type="text" id="ticketId" name="ticketId" class="input" required/></div>
@@ -383,8 +378,8 @@
               <h2>Unggah Dokumen</h2>
               <div class="form-group"><label class="label required" for="ktpFile">KTP</label><div class="file-box"><input type="file" id="ktpFile" class="file" accept="image/*,.pdf" required></div></div>
               <div class="form-group"><label class="label required" for="scanKtpFile">Scan KTP Reader</label><div class="file-box"><input type="file" id="scanKtpFile" class="file" accept="image/*,.pdf" required></div></div>
-              <div class="form-group"><label class="label required" for="ottFile">Aplikasi OTT 1</label><div class="file-box"><input type="file" id="ottFile" class="file" accept="image/*,.pdf" required></div></div>
-              <div class="form-group"><label class="label required" for="silkcardFile">Silkcard | QR Code</label><div class="file-box"><input type="file" id="silkcardFile" class="file" accept="image/*,.pdf" required></div></div>
+              <div class="form-group"><label class="label required" for="ottFile">Bukti 1</label><div class="file-box"><input type="file" id="ottFile" class="file" accept="image/*,.pdf" required></div></div>
+              <div class="form-group"><label class="label required" for="silkcardFile">Bukti 2</label><div class="file-box"><input type="file" id="silkcardFile" class="file" accept="image/*,.pdf" required></div></div>
               <div class="form-group"><label class="label required" for="formFile">Form Layanan</label><div class="file-box"><input type="file" id="formFile" class="file" accept="image/*,.pdf" required></div></div>
             </div>
 
@@ -405,11 +400,10 @@
       </div>
     </section>
   </main>
-
   <!-- TOAST + CLOCK + FOOTER -->
   <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
   <div class="clock" id="clock" aria-live="polite"></div>
-  <footer class="footer">Design by Haris | © <span id="yearNow"></span> Telkomsel</footer>
+  <footer class="footer">Design by Rania | © <span id="yearNow"></span> Telkomsel</footer>
 
   <script>
     const { jsPDF } = window.jspdf;
