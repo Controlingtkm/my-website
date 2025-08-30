@@ -110,7 +110,10 @@
        ========================= */
     .navbar {
       position: sticky; top: 0; z-index: 50;
-      display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center;
+      display: grid; 
+      grid-template-columns: 1fr auto;
+      gap: 16px; 
+      align-items: center;
       padding: 12px 20px;
       background: var(--surface);
       border-bottom: 1px solid var(--border);
@@ -118,113 +121,422 @@
     }
     .brand { display: flex; align-items: center; gap: 12px; }
     .brand-badge {
-      width: 44px; height: 44px; border-radius: 10px; flex: 0 0 auto;
+      width: 44px; 
+      height: 44px; 
+      border-radius: 10px; 
+      flex: 0 0 auto;
       background: var(--primary);
-      color: #fff; display: grid; place-items: center; font-weight: 800;
+      color: #fff; 
+      display: grid; 
+      place-items: center; 
+      font-weight: 800;
       box-shadow: inset 0 -4px 12px rgba(0,0,0,.15);
     }
-    .brand-name { font-weight: 800; letter-spacing: .2px; }
+    .brand-name 
+    { font-weight: 800; 
+      letter-spacing: .2px; }
 
-    .menu { display: flex; gap: 8px 4px; flex-wrap: wrap; align-items: center; }
+    .menu { 
+      display: flex; 
+      gap: 8px 4px; 
+      flex-wrap: wrap; 
+      align-items: center;
+     }
     .menu a {
-      position: relative; padding: 8px 12px; border-radius: 10px; color: var(--muted);
+      position: relative; 
+      padding: 8px 12px; 
+      border-radius: 10px; 
+      color: var(--muted);
       transition: var(--trans);
     }
-    .menu a:hover { color: var(--text); background: color-mix(in srgb, var(--primary) 6%, transparent); }
-    .menu a.active { color: var(--text); background: color-mix(in srgb, var(--primary) 12%, transparent); }
+    .menu a:hover { 
+      color: var(--text); 
+      background: color-mix(in srgb, var(--primary) 6%, transparent);
+     }
+    .menu a.active { 
+      color: var(--text); 
+      background: color-mix(in srgb, var(--primary) 12%, transparent); 
+    }
     .menu a.active::after {
-      content: ""; position: absolute; left: 12px; right: 12px; bottom: 4px; height: 2px; border-radius: 2px; background: var(--primary);
+      content: ""; 
+      position: absolute; 
+      left: 12px; 
+      right: 12px; 
+      bottom: 4px; 
+      height: 2px; 
+      border-radius: 2px; 
+      background: var(--primary);
     }
 
-    .actions { display: flex; align-items: center; gap: 10px; }
+    .actions { 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+    }
     .btn-theme {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 12px; border-radius: 12px; border: 1px solid var(--border);
-      background: var(--surface); color: var(--text);
+      display: inline-flex; 
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px; 
+      border-radius: 12px; 
+      border: 1px solid var(--border);
+      background: var(--surface); 
+      color: var(--text);
       box-shadow: var(--shadow);
     }
     .user {
-      display: inline-flex; align-items: center; gap: 10px; padding: 6px 10px;
-      border-radius: 999px; border: 1px solid var(--border); background: var(--surface);
+      display: inline-flex; 
+      align-items: center; 
+      gap: 10px; 
+      padding: 6px 10px;
+      border-radius: 999px; 
+      border: 1px solid var(--border); 
+      background: var(--surface);
     }
-    .avatar { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--primary); color: #fff; font-weight: 800; }
+    .avatar { 
+      width: 36px; 
+      height: 36px; 
+      border-radius: 50%; 
+      display: grid; 
+      place-items: center; 
+      background: var(--primary); 
+      color: #fff; 
+      font-weight: 800; 
+    }
 
     /* =========================
        LAYOUT
        ========================= */
-    .container { max-width: 1280px; margin-inline: auto; padding: 24px; }
-    .page-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
-    .page-title { font-size: clamp(18px, 2vw, 24px); font-weight: 800; }
+    .container { 
+      max-width: 1280px; 
+      margin-inline: auto; 
+      padding: 24px; 
+    }
+    .page-header { 
+      display: flex; 
+      flex-wrap: wrap; 
+      align-items: center; 
+      justify-content: space-between; 
+      gap: 12px; 
+      margin-bottom: 18px; 
+    }
+    .page-title { 
+      font-size: clamp(18px, 2vw, 24px); 
+      font-weight: 800; 
+    }
 
-    .date-filter { display: inline-flex; align-items: center; gap: 10px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); }
-    .date-filter i { color: var(--muted); }
-    .date-filter select { border: 0; background: transparent; color: var(--text); }
+    .date-filter { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 10px; 
+      padding: 8px 12px; 
+      border: 1px solid var(--border); 
+      border-radius: 12px; 
+      background: var(--surface); 
+      box-shadow: var(--shadow);
+     }
+    .date-filter i { 
+      color: var(--muted);
+     }
+    .date-filter select { 
+      border: 0; 
+      background: transparent; 
+      color: var(--text); 
+    }
 
     /* Cards */
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 18px 0 22px; }
+    .cards { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+      gap: 16px; 
+      margin: 18px 0 22px; 
+    }
     .card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; position: relative; overflow: hidden; box-shadow: var(--shadow);
+      background: var(--surface); 
+      border: 1px solid var(--border); 
+      border-radius: var(--radius); 
+      padding: 16px; 
+      position: relative; 
+      overflow: hidden; 
+      box-shadow: var(--shadow);
       isolation: isolate;
     }
-    .card::before { content: ""; position: absolute; inset: -20px auto auto -20px; width: 8px; height: 120%; background: var(--primary); transform: rotate(8deg); opacity: .2; z-index: -1; }
-    .card h3 { font-size: 12px; letter-spacing: .6px; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
-    .big { font-size: clamp(28px, 5vw, 34px); font-weight: 800; }
-    .trend { margin-top: 6px; font-size: 12px; display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--border); }
-    .trend.up { color: var(--success); }
-    .trend.down { color: var(--danger); }
+    .card::before { 
+      content: ""; 
+      position: absolute; 
+      inset: -20px auto auto -20px; 
+      width: 8px; 
+      height: 120%; 
+      background: var(--primary); 
+      transform: rotate(8deg); 
+      opacity: .2; 
+      z-index: -1; 
+    }
+    .card h3 { 
+      font-size: 12px; 
+      letter-spacing: .6px; 
+      color: var(--muted); 
+      text-transform: uppercase; 
+      margin-bottom: 6px; 
+    }
+    .big { 
+      font-size: clamp(28px, 5vw, 34px); 
+      font-weight: 800; 
+    }
+    .trend { 
+      margin-top: 6px; 
+      font-size: 12px; 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 6px; padding: 4px 8px; 
+      border-radius: 999px; 
+      border: 1px solid var(--border); 
+    }
+    .trend.up { 
+      color: var(--success); 
+    }
+    .trend.down { 
+      color: var(--danger); 
+    }
 
     /* Charts */
-    .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
-    .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
-    .chart-card h3 { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 16px; margin: 0 0 10px; }
-    .chart-card .more { font-size: 12px; color: var(--primary); cursor: pointer; }
-    .chart-wrap { height: 260px; position: relative; }
+    .chart-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+      gap: 16px; 
+    }
+    .chart-card { 
+      background: var(--surface); 
+      border: 1px solid var(--border); 
+      border-radius: var(--radius); 
+      padding: 16px; 
+      box-shadow: var(--shadow); 
+    }
+    .chart-card h3 { 
+      display: flex;
+      align-items: center; 
+      justify-content: space-between; 
+      gap: 10px; 
+      font-size: 16px; 
+      margin: 0 0 10px; 
+    }
+    .chart-card .more { 
+      font-size: 12px; 
+      color: var(--primary); 
+      cursor: pointer; 
+    }
+    .chart-wrap { 
+      height: 260px; 
+      position: relative; 
+    }
 
     /* Toast */
-    #toast-container { position: fixed; top: 16px; right: 16px; z-index: 1000; display: grid; gap: 8px; }
-    .toast { display: inline-flex; align-items: center; gap: 10px; padding: 10px 12px; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--info); border-radius: 12px; box-shadow: var(--shadow); animation: slideIn .25s ease forwards; }
-    .toast.success { border-left-color: var(--success); }
-    .toast.error { border-left-color: var(--danger); }
-    .toast.info { border-left-color: var(--info); }
+    #toast-container { 
+      position: fixed; 
+      top: 16px; 
+      right: 16px; 
+      z-index: 1000; 
+      display: grid; 
+      gap: 8px; 
+    }
+    .toast { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 10px; 
+      padding: 10px 12px; 
+      background: var(--surface);
+      border: 1px solid var(--border); 
+      border-left: 4px solid var(--info); 
+      border-radius: 12px; 
+      box-shadow: var(--shadow); 
+      animation: slideIn .25s ease forwards; }
+    .toast.success { 
+      border-left-color: var(--success); 
+    }
+    .toast.error { 
+      border-left-color: var(--danger); 
+    }
+    .toast.info { 
+      border-left-color: var(--info); 
+    }
     @keyframes slideIn { from { transform: translateX(40px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
     /* Clock & Footer */
-    .clock { position: fixed; bottom: 16px; right: 16px; padding: 8px 12px; border-radius: 999px; background: var(--primary); color: #fff; font-weight: 600; box-shadow: var(--shadow); z-index: 999; }
-    .footer { text-align: center; padding: 24px; color: var(--muted); font-size: 12px; }
+    .clock { 
+      position: fixed; 
+      bottom: 16px; 
+      right: 16px; 
+      padding: 8px 12px; 
+      border-radius: 999px; 
+      background: var(--primary); color: #fff; 
+      font-weight: 600; 
+      box-shadow: var(--shadow); 
+      z-index: 999; 
+    }
+    .footer { 
+      text-align: center; 
+      padding: 24px; 
+      color: var(--muted); 
+      font-size: 12px; 
+    }
 
     /* Form BA */
-    .form-wrap { max-width: 1000px; margin-inline: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: var(--shadow); }
-    .form-title { text-align: center; color: var(--primary); margin: 4px 0 16px; font-weight: 900; }
-    .form-section { margin: 18px 0; padding: 16px; border-radius: 12px; border: 1px dashed var(--border); background: color-mix(in srgb, var(--primary) 4%, var(--surface)); }
-    .form-group { margin-bottom: 12px; }
-    .label { display: block; margin-bottom: 6px; font-weight: 700; color: var(--muted); }
-    .label.required::after { content: " *"; color: var(--danger); }
-    .input, .file { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text); }
-    .file-box { padding: 12px; border-radius: 12px; border: 2px dashed var(--border); background: color-mix(in srgb, var(--info) 6%, var(--surface)); }
-    .btn { display: inline-flex; gap: 8px; align-items: center; padding: 10px 14px; border-radius: 12px; border: 0; box-shadow: var(--shadow); font-weight: 700; }
-    .btn.primary { background: var(--primary); color: #fff; }
-    .btn.secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
-    .btn.success { background: var(--success); color: #fff; }
-    .btn:disabled { opacity: .6; cursor: not-allowed; }
+    .form-wrap { 
+      max-width: 1000px; 
+      margin-inline: auto; 
+      background: var(--surface); 
+      border: 1px solid var(--border); 
+      border-radius: 16px; 
+      padding: 24px; 
+      box-shadow: var(--shadow); 
+    }
+    .form-title { 
+      text-align: center; 
+      color: var(--primary); 
+      margin: 4px 0 16px; 
+      font-weight: 900; 
+    }
+    .form-section { 
+      margin: 18px 0; 
+      padding: 16px; 
+      border-radius: 12px; 
+      border: 1px dashed var(--border); 
+      background: color-mix(in srgb, var(--primary) 4%, var(--surface)); 
+    }
+    .form-group { 
+      margin-bottom: 12px; 
+    }
+    .label { 
+      display: block; 
+      margin-bottom: 6px; 
+      font-weight: 700; color: var(--muted); 
+    }
+    .label.required::after { 
+      content: " *"; 
+      color: var(--danger); 
+    }
+    .input, .file { 
+      width: 100%; 
+      padding: 10px 12px; 
+      border-radius: 10px; 
+      border: 1px solid var(--border); 
+      background: var(--surface); color: var(--text);
+    }
+    .file-box { 
+      padding: 12px; 
+      border-radius: 12px; 
+      border: 2px dashed var(--border); 
+      background: color-mix(in srgb, var(--info) 6%, var(--surface)); 
+    }
+    .btn { 
+      display: inline-flex; 
+      gap: 8px; 
+      align-items: center; 
+      padding: 10px 14px; 
+      border-radius: 12px; 
+      border: 0; 
+      box-shadow: var(--shadow); 
+      font-weight: 700; 
+    }
+    .btn.primary { 
+      background: var(--primary); 
+      color: #fff; }
+    .btn.secondary { 
+      background: var(--surface); 
+      color: var(--text); 
+      border: 1px solid var(--border); 
+    }
+    .btn.success { 
+      background: var(--success); 
+      color: #fff; 
+    }
+    .btn:disabled { 
+      opacity: .6; 
+      cursor: not-allowed; 
+    }
 
     /* KKM specific styles (kept compatible) */
-    .stats-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-    .stat-card { background: var(--surface); border-radius: 8px; padding: 1.5rem; box-shadow: var(--shadow); position: relative; overflow: hidden; }
-    .stat-card::before { content: ''; position: absolute; top:0; left:0; width:4px; height:100%; background: var(--primary); }
-    .stat-card h3 { font-size: 0.9rem; color: var(--muted); margin-bottom: 8px; }
+    .stats-cards { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 1.5rem; 
+      margin-bottom: 2rem; 
+    }
+    .stat-card { 
+      background: var(--surface);
+      border-radius: 8px; 
+      padding: 1.5rem; 
+      box-shadow: var(--shadow); 
+      position: relative; 
+      overflow: hidden; 
+    }
+    .stat-card::before { 
+      content: ''; 
+      position: absolute; 
+      top:0; left:0; 
+      width:4px; 
+      height:100%; 
+      background: var(--primary); 
+    }
+    .stat-card h3 { 
+      font-size: 0.9rem; 
+      color: var(--muted); 
+      margin-bottom: 8px; 
+    }
 
-    .form-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; background: var(--surface); padding: 1.5rem; border-radius: 8px; box-shadow: var(--shadow); margin-bottom: 1.5rem; }
-    .file-input-label { background: transparent; color: var(--primary); border: 1px solid var(--primary); padding: 0.8rem 1.5rem; border-radius: 4px; cursor: pointer; font-weight: 500; display:flex; align-items:center; gap:8px; }
-    .file-input { display:none; }
-    .table-container { background: var(--surface); border-radius: 8px; box-shadow: var(--shadow); overflow: hidden; margin-bottom: 2rem; }
-    table { width:100%; border-collapse: collapse; }
-    th, td { padding: 1rem; text-align:left; border-bottom: 1px solid var(--border); }
-    th { background: color-mix(in srgb, var(--primary) 3%, var(--surface)); }
-    .avatar { width:50px; height:50px; border-radius:50%; object-fit:cover; }
+    .form-container { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+      gap: 1rem; 
+      background: var(--surface); 
+      padding: 1.5rem; border-radius: 8px; 
+      box-shadow: var(--shadow); 
+      margin-bottom: 1.5rem; 
+    }
+    .file-input-label { 
+      background: transparent; 
+      color: var(--primary); 
+      border: 1px solid var(--primary); 
+      padding: 0.8rem 1.5rem; 
+      border-radius: 4px; cursor: pointer; 
+      font-weight: 500; display:flex; 
+      align-items:center; 
+      gap:8px; 
+    }
+    .file-input { 
+      display:none; 
+    }
+    .table-container { 
+      background: var(--surface); 
+      border-radius: 8px; 
+      box-shadow: var(--shadow); 
+      overflow: hidden; 
+      margin-bottom: 2rem; 
+    }
+    table { 
+      width:100%; 
+      border-collapse: collapse; 
+    }
+    th, td { 
+      padding: 1rem; 
+      text-align:left; 
+      border-bottom: 1px solid var(--border); 
+    }
+    th { 
+      background: color-mix(in srgb, var(--primary) 3%, var(--surface)); }
+    .avatar { width:50px;
+      height:50px; 
+      border-radius:50%; 
+      object-fit:cover; 
+    }
 
     /* Pages */
-    .page { display: none; }
-    .page.active { display: block; }
+    .page { 
+      display: none; 
+    }
+    .page.active { 
+      display: block; 
+    }
 
     /* Responsive tweaks */
     @media (max-width: 768px) {
@@ -277,12 +589,31 @@
         </div>
 
         <div class="cards">
-          <div class="card"><h3>Ticket Pending</h3><div class="big" id="cardPending">24</div><div class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 12% dari bulan lalu</div></div>
-          <div class="card"><h3>In Progress</h3><div class="big" id="cardProgress">18</div><div class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 5% dari bulan lalu</div></div>
-          <div class="card"><h3>Completed</h3><div class="big" id="cardDone">156</div><div class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 8% dari bulan lalu</div></div>
-          <div class="card"><h3>Total Pekerjaan (KKM)</h3><div class="big" id="cardPekerjaan">89</div><div class="trend down"><i class="fa-solid fa-arrow-trend-down"></i> 3% dari bulan lalu</div></div>
-          <div class="card"><h3>Total Temuan (KKM)</h3><div class="big" id="cardTemuan">42</div><div class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 15% dari bulan lalu</div></div>
-          <div class="card"><h3>Total Monitoring</h3><div class="big" id="cardMonTotal">67</div><div class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 9% dari bulan lalu</div></div>
+          <div class="card"><h3>Ticket Pending</h3>
+            <div class="big" id="cardPending">24</div>
+            <div class="trend up">
+              <i class="fa-solid fa-arrow-trend-up"></i> 12% dari bulan lalu</div>
+            </div>
+          <div class="card"><h3>In Progress</h3>
+            <div class="big" id="cardProgress">18</div>
+            <div class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 5% dari bulan lalu</div>
+          </div>
+          <div class="card"><h3>Completed</h3>
+            <div class="big" id="cardDone">156</div>
+            <div class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 8% dari bulan lalu</div>
+          </div>
+          <div class="card"><h3>Total Pekerjaan (KKM)</h3>
+            <div class="big" id="cardPekerjaan">89</div>
+            <div class="trend down"><i class="fa-solid fa-arrow-trend-down"></i> 3% dari bulan lalu</div>
+          </div>
+          <div class="card"><h3>Total Temuan (KKM)</h3>
+            <div class="big" id="cardTemuan">42</div>
+            <div class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 15% dari bulan lalu</div>
+          </div>
+          <div class="card"><h3>Total Monitoring</h3>
+            <div class="big" id="cardMonTotal">67</div>
+            <div class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 9% dari bulan lalu</div>
+          </div>
         </div>
 
         <div class="chart-grid">
@@ -295,7 +626,44 @@
 
     <!-- CONTROL TICKET (placeholder) -->
     <section id="ticket" class="page" aria-labelledby="title-ticket">
-      <div class="container"><h1 id="title-ticket" class="page-title">Control Ticket</h1><p>Halaman Control Ticket akan ditampilkan di sini.</p></div>
+       <div class="container">
+        <h2>Controlling Ticket Pelaporan</h2>
+        <button onclick="toggleDarkMode()">Mode Gelap/Terang</button>
+        <div class="form-container">
+            <label>Nama Pelapor:</label>
+            <input type="text" id="namaPelapor" required>
+            <label>Layanan:</label>
+            <select id="Layanan">
+                <option value="telkomsel">Telkomsel</option>
+                <option value="Indihome">Indihome</option>
+            </select>
+            <label>Issue:</label>
+            <input type="text" id="Issue" required>
+            <label>Progress:</label>
+            <select id="progress">
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <label>Catatan:</label>
+            <input type="text" id="catatan">
+            <button onclick="tambahTicket()">Tambah Ticket</button>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Nama CS</th>
+                        <th>Layanan</th>
+                        <th>Issue</th>
+                        <th>Progress</th>
+                        <th>Catatan</th>
+                    </tr>
+                </thead>
+                <tbody id="ticketList"></tbody>
+            </table>
+        </div>
     </section>
 
     <!-- KKM (gabungan dari file KKM) -->
@@ -316,10 +684,22 @@
         </div>
 
         <div class="stats-cards">
-          <div class="stat-card"><h3>Total Karyawan</h3><div class="big" id="totalKaryawan">0</div><div class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 5% dari bulan lalu</div></div>
-          <div class="stat-card"><h3>Rata-rata Pekerjaan</h3><div class="big" id="avgPekerjaan">0</div><div class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 8% dari bulan lalu</div></div>
-          <div class="stat-card"><h3>Rata-rata Temuan</h3><div class="big" id="avgTemuan">0</div><div class="trend down"><i class="fa-solid fa-arrow-trend-down"></i> 3% dari bulan lalu</div></div>
-          <div class="stat-card"><h3>Rasio Temuan/Pekerjaan</h3><div class="big" id="rasioTemuan">0%</div><div class="trend down"><i class="fa-solid fa-arrow-trend-down"></i> 2% dari bulan lalu</div></div>
+          <div class="stat-card"><h3>Total Karyawan</h3>
+            <div class="big" id="totalKaryawan">0</div>
+            <div class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 5% dari bulan lalu</div>
+          </div>
+          <div class="stat-card"><h3>Rata-rata Pekerjaan</h3>
+            <div class="big" id="avgPekerjaan">0</div>
+            <div class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> 8% dari bulan lalu</div>
+          </div>
+          <div class="stat-card"><h3>Rata-rata Temuan</h3>
+            <div class="big" id="avgTemuan">0</div>
+            <div class="trend down"><i class="fa-solid fa-arrow-trend-down"></i> 3% dari bulan lalu</div>
+          </div>
+          <div class="stat-card"><h3>Rasio Temuan/Pekerjaan</h3>
+            <div class="big" id="rasioTemuan">0%</div>
+            <div class="trend down"><i class="fa-solid fa-arrow-trend-down"></i> 2% dari bulan lalu</div>
+          </div>
         </div>
 
         <div class="form-container">
@@ -327,14 +707,39 @@
           <input type="text" id="namaKaryawan" placeholder="Nama Karyawan" />
           <input type="number" id="totalPekerjaan" placeholder="Total Pekerjaan" />
           <input type="number" id="totalTemuan" placeholder="Total Temuan" />
-          <button class="btn primary" style="grid-column: 1 / -1;" onclick="tambahKaryawan()"><i class="fa-solid fa-plus"></i> Tambah / Update</button>
+          <button class="btn primary" 
+          style="grid-column: 1 / -1;" 
+          onclick="tambahKaryawan()"><i 
+          class="fa-solid fa-plus"></i> Tambah / Update</button>
         </div>
 
-        <div class="action-bar" style="display:flex; gap:10px; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap;">
-          <input type="text" id="searchInput" placeholder="Cari Karyawan..." onkeyup="searchTable()" style="flex:1; min-width:220px; padding:10px; border:1px solid var(--border); border-radius:8px;" />
-          <button class="btn secondary" onclick="exportTableToExcel()"><i class="fa-solid fa-file-export"></i> Export Excel</button>
-          <label class="file-input-label"><i class="fa-solid fa-file-import"></i> Import Excel<input type="file" id="importFile" class="file-input" accept=".xlsx,.xls" onchange="importFromExcel(event)" /></label>
-          <button class="btn primary" onclick="resetData()"><i class="fa-solid fa-sync-alt"></i> Reset Data</button>
+        <div class="action-bar" 
+        style="display:flex; 
+        gap:10px; 
+        align-items:center; 
+        margin-bottom:1.5rem; 
+        flex-wrap:wrap;">
+          <input type="text" id="searchInput" 
+          placeholder="Cari Karyawan..." 
+          onkeyup="searchTable()" 
+          style="flex:1; 
+          min-width:220px; 
+          padding:10px; 
+          border:1px solid var(--border); 
+          border-radius:8px;" />
+          <button class="btn secondary" 
+          onclick="exportTableToExcel()"><i 
+          class="fa-solid fa-file-export"></i> Export Excel</button>
+          <label class="file-input-label"><i 
+            class="fa-solid fa-file-import"></i> Import Excel<input 
+            type="file" 
+            id="importFile" 
+            class="file-input" 
+            accept=".xlsx,.xls" 
+            onchange="importFromExcel(event)" /></label>
+          <button class="btn primary" 
+          onclick="resetData()"><i 
+          class="fa-solid fa-sync-alt"></i> Reset Data</button>
         </div>
 
         <div class="table-container">
@@ -347,62 +752,268 @@
         </div>
 
         <div class="chart-container">
-          <h3>Perbandingan Kinerja Karyawan <span class="more" onclick="showFullScreenChart()">Lihat detail</span></h3>
-          <div class="chart-wrapper"><canvas id="kkmChart"></canvas></div>
+          <h3>Perbandingan Kinerja Karyawan <span 
+            class="more" 
+            onclick="showFullScreenChart()">Lihat detail</span>
+          </h3>
+          <div class="chart-wrapper"><canvas 
+            id="kkmChart"></canvas>
+          </div>
         </div>
+        <button type="button" onclick="tambahTicket()">Tambah Tiket</button>
       </div>
     </section>
 
     <!-- MONITORING (placeholder) -->
-    <section id="monitoring" class="page" aria-labelledby="title-monitoring">
-      <div class="container"><h1 id="title-monitoring" class="page-title">Monitoring</h1><p>Halaman Monitoring akan ditampilkan di sini.</p></div>
+    <section id="monitoring" 
+    class="page" 
+    aria-labelledby="title-monitoring">
+      <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">Monitoring Indihome</h1>
+      <div class="date-filter">
+        <i class="fas fa-calendar-alt"></i>
+        <select id="dateRange">
+          <option value="today">Hari Ini</option>
+          <option value="week">Minggu Ini</option>
+          <option value="month" selected>Bulan Ini</option>
+          <option value="quarter">Kuartal Ini</option>
+          <option value="year">Tahun Ini</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="stats-cards">
+      <div class="stat-card">
+        <h3>Total Laporan</h3>
+        <div class="big" id="totalLaporan">0</div>
+        <div class="trend up">
+          <i class="fas fa-arrow-up"></i> 12% dari bulan lalu
+        </div>
+      </div>
+      <div class="stat-card">
+        <h3>Laporan AO</h3>
+        <div class="big" id="totalAO">0</div>
+        <div class="trend up">
+          <i class="fas fa-arrow-up"></i> 8% dari bulan lalu
+        </div>
+      </div>
+      <div class="stat-card">
+        <h3>Laporan MO</h3>
+        <div class="big" id="totalMO">0</div>
+        <div class="trend down">
+          <i class="fas fa-arrow-down"></i> 5% dari bulan lalu
+        </div>
+      </div>
+      <div class="stat-card">
+        <h3>Rata-rata per CS</h3>
+        <div class="big" id="avgPerCS">0</div>
+        <div class="trend up">
+          <i class="fas fa-arrow-up"></i> 3% dari bulan lalu
+        </div>
+      </div>
+    </div>
+
+    <!-- Form tambah data -->
+    <div class="form-container">
+      <label for="namaCs">Nama CS:</label>
+      <input type="text" id="namaCs" placeholder="Masukkan nama CS" required/>
+      
+      <label for="laporan">Jenis Laporan:</label>
+      <select id="laporan">
+        <option value="AO">AO - Aktivasi Order</option>
+        <option value="MO">MO - Modifikasi Order</option>
+        <option value="SO">SO - Suspend Order</option>
+        <option value="RO">RO - Resume Order</option>
+        <option value="DO">DO - Deactived Order</option>
+      </select>
+      
+      <label for="masalah">Masalah:</label>
+      <input type="text" id="masalah" placeholder="Jelaskan masalahnya" required/>
+      
+      <label for="catatan">Catatan:</label>
+      <textarea id="catatan" placeholder="Tambahkan catatan (opsional)"></textarea>
+      
+      <button class="primary" onclick="tambahLaporan()">
+        <i class="fas fa-plus"></i> Tambah Laporan
+      </button>
+    </div>
+
+    <!-- Search & tindakan -->
+    <div class="action-bar">
+      <div class="search-container">
+        <input type="text" id="searchMonitoring" placeholder="Cari Nama CS, Masalah, atau Catatan..." onkeyup="searchTable()"/>
+        <select id="searchCategory">
+          <option value="all">Semua Kategori</option>
+          <option value="nama">Nama CS</option>
+          <option value="masalah">Masalah</option>
+          <option value="catatan">Catatan</option>
+        </select>
+      </div>
+      <select id="filterJenis" onchange="applyFilter()">
+        <option value="">Semua Jenis Laporan</option>
+        <option value="AO">AO - Aktivasi Order</option>
+        <option value="MO">MO - Modifikasi Order</option>
+        <option value="SO">SO - Suspend Order</option>
+        <option value="RO">RO - Resume Order</option>
+        <option value="DO">DO - Deactived Order</option>
+      </select>
+      <button class="secondary" onclick="exportTableToExcel()">
+        <i class="fas fa-file-export"></i> Export Excel
+      </button>
+      <label class="file-input-label">
+        <i class="fas fa-file-import"></i> Import Excel
+        <input type="file" id="importMonitoring" class="file-input" accept=".xlsx,.xls" onchange="importMonitoringExcel(event)"/>
+      </label>
+      <button type="button" class="primary" onclick="tambahLaporan()">
+  <i class="fas fa-plus"></i> Tambah Laporan
+</button>
+
+    </div>
+
+    <!-- Tabel -->
+    <div class="table-container">
+      <table id="monitoringTable">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Nama CS</th>
+            <th>Jenis Laporan</th>
+            <th>Masalah</th>
+            <th>Catatan</th>
+            <th>Tanggal</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="laporanList"></tbody>
+      </table>
+      <div id="paginationControls"></div>
+    </div>
+
+    <!-- Chart -->
+    <div class="chart-container">
+      <h3>
+        Distribusi Jenis Laporan
+        <span class="more" onclick="showFullScreenChart()">Lihat detail</span>
+      </h3>
+      <div class="chart-wrapper">
+        <canvas id="monitoringChart"></canvas>
+      </div>
+    </div>
+  </div>
     </section>
 
 <!-- BERITA ACARA -->
     <section id="ba" class="page" aria-labelledby="title-ba">
       <div class="container">
         <div class="form-wrap">
-          <h1 id="title-ba" class="form-title">Berita Acara Adjusment Tagihan</h1>
+          <h1 id="title-ba" 
+          class="form-title">Berita Acara Adjusment Tagihan</h1>
 
           <form id="reactivationForm" novalidate>
             <div class="form-section">
               <h2>Informasi Pelanggan</h2>
-              <div class="form-group"><label class="label required" for="msisdn">No. Indihome</label><input type="tel" id="msisdn" name="msisdn" class="input" inputmode="numeric" pattern="^\d{9,15}$" placeholder="152xxxxxxxx" required/></div>
-              <div class="form-group"><label class="label required" for="status">MSISDN</label><input type="text" id="status" name="status" class="input" required/></div>
-              <div class="form-group"><label class="label required" for="customerName">Nama Pelanggan</label><input type="text" id="customerName" name="customerName" class="input" required/></div>
-              <div class="form-group"><label class="label required" for="nik">NIK</label><input type="text" id="nik" name="nik" class="input" inputmode="numeric" pattern="^\d{16}$" placeholder="16 digit" required/></div>
-              <div class="form-group"><label class="label required" for="ticketId">Nomor ID Tiket</label><input type="text" id="ticketId" name="ticketId" class="input" required/></div>
+              <div class="form-group">
+                <label 
+                class="label required" 
+                for="msisdn">No. Indihome</label>
+                <input type="tel" 
+                id="msisdn" 
+                name="msisdn" 
+                class="input" 
+                inputmode="numeric" 
+                pattern="^\d{9,15}$" 
+                placeholder="152xxxxxxxx" required/>
+              </div>
+              <div class="form-group">
+                <label 
+                class="label required" for="status">MSISDN</label>
+                <input type="text" id="status"name="status" class="input" required/>
+              </div>
+              <div class="form-group">
+                <label class="label required" for="customerName">Nama Pelanggan</label>
+                <input type="text" id="customerName" name="customerName" class="input" required/></div>
+              <div class="form-group">
+                <label class="label required" for="nik">NIK</label>
+                <input type="text" id="nik" name="nik" class="input" inputmode="numeric" pattern="^\d{16}$" placeholder="16 digit" required/>
+              </div>
+              <div class="form-group">
+                <label class="label required" for="ticketId">Nomor ID Tiket</label>
+                <input type="text" id="ticketId" name="ticketId" class="input" required/>
+              </div>
             </div>
 
             <div class="form-section">
               <h2>Unggah Dokumen</h2>
-              <div class="form-group"><label class="label required" for="ktpFile">KTP</label><div class="file-box"><input type="file" id="ktpFile" class="file" accept="image/*,.pdf" required></div></div>
-              <div class="form-group"><label class="label required" for="scanKtpFile">Scan KTP Reader</label><div class="file-box"><input type="file" id="scanKtpFile" class="file" accept="image/*,.pdf" required></div></div>
-              <div class="form-group"><label class="label required" for="ottFile">Bukti 1</label><div class="file-box"><input type="file" id="ottFile" class="file" accept="image/*,.pdf" required></div></div>
-              <div class="form-group"><label class="label required" for="silkcardFile">Bukti 2</label><div class="file-box"><input type="file" id="silkcardFile" class="file" accept="image/*,.pdf" required></div></div>
-              <div class="form-group"><label class="label required" for="formFile">Form Layanan</label><div class="file-box"><input type="file" id="formFile" class="file" accept="image/*,.pdf" required></div></div>
+              <div class="form-group">
+                <label class="label required" for="ktpFile">KTP</label>
+                <div class="file-box"><input type="file" id="ktpFile" class="file" accept="image/*,.pdf" required>
+                </div>
+              </div>
+              <div class="form-group"><label 
+                class="label required" 
+                for="scanKtpFile">Scan KTP Reader</label>
+                <div 
+                class="file-box"><input type="file" id="scanKtpFile" class="file" accept="image/*,.pdf" required></div>
+              </div>
+              <div class="form-group">
+                <label class="label required" for="ottFile">Bukti 1</label>
+                <div class="file-box">
+                  <input type="file" id="ottFile" class="file" accept="image/*,.pdf" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="label required" for="silkcardFile">Bukti 2</label>
+                <div class="file-box">
+                  <input type="file" id="silkcardFile" class="file" accept="image/*,.pdf" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="label required" for="formFile">Form Layanan</label>
+                <div class="file-box">
+                  <input type="file" id="formFile" class="file" accept="image/*,.pdf" required>
+                </div>
+              </div>
             </div>
 
             <div style="display:flex; gap:10px; justify-content:center; margin-top: 14px">
-              <button type="button" id="previewBtn" class="btn secondary"><i class="fa-solid fa-eye"></i> Preview</button>
+              <button type="button" 
+              id="previewBtn" 
+              class="btn secondary">
+              <i class="fa-solid fa-eye"></i> Preview</button>
               <button type="button" id="generatePdfBtn" class="btn success"><i class="fa-solid fa-file-pdf"></i> Generate PDF</button>
             </div>
           </form>
 
-          <div id="previewContainer" style="display:none; margin-top:18px">
+          <div id="previewContainer" 
+          style="display:none; margin-top:18px">
             <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px">
               <h2 style="margin:0">Preview Dokumen</h2>
-              <button type="button" id="downloadPdfBtn" class="btn primary"><i class="fa-solid fa-download"></i> Download PDF</button>
+              <button type="button" 
+              id="downloadPdfBtn" 
+              class="btn primary">
+              <i class="fa-solid fa-download"></i> Download PDF</button>
             </div>
-            <div id="pdfPreview" style="border:1px solid var(--border); border-radius: 12px; overflow:hidden; background: var(--surface)"></div>
+            <div id="pdfPreview" 
+            style="border:1px solid var(--border); border-radius: 12px; overflow:hidden; background: var(--surface)">
+          </div>
           </div>
         </div>
       </div>
     </section>
   </main>
   <!-- TOAST + CLOCK + FOOTER -->
-  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
-  <div class="clock" id="clock" aria-live="polite"></div>
+  <div 
+  id="toast-container" 
+  aria-live="polite" 
+  aria-atomic="true">
+  </div>
+  <div 
+  class="clock" 
+  id="clock" 
+  aria-live="polite">
+  </div>
   <footer class="footer">Design by Rania | © <span id="yearNow"></span> Telkomsel</footer>
 
   <script>
@@ -439,33 +1050,385 @@
       const info = cssVar('--info'); const succ = cssVar('--success'); const warn = cssVar('--warning'); const mut = cssVar('--muted'); const p = cssVar('--primary');
       if(forceRebuild){ [chartTicket, chartKKM, chartMon, kkmChart].forEach(c=>c && c.destroy()); }
       // Ticket
-      const tctx = document.getElementById('chartTicket').getContext('2d'); chartTicket = new Chart(tctx,{ type:'doughnut', data:{ labels:['Pending','In Progress','Completed'], datasets:[{ data:[24,18,156], backgroundColor:[warn, info, succ], borderWidth:0 }] }, options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:'bottom', labels:{ color: mut } } } } });
+      const tctx = document.getElementById('chartTicket').getContext('2d'); 
+      chartTicket = new Chart(tctx,{ 
+      type:'doughnut', 
+      data:{ 
+      labels:['Pending','In Progress','Completed'], 
+      datasets:[{ 
+      data:[24,18,156], 
+      backgroundColor:[warn, info, succ], 
+      borderWidth:0 }] 
+      }, 
+      options:{ 
+      responsive:true, 
+      maintainAspectRatio:false, 
+      plugins:{ legend:{ 
+      position:'bottom', labels:{ color: mut 
+      } } } } });
       // KKM small
-      const kctx = document.getElementById('chartKKM').getContext('2d'); chartKKM = new Chart(kctx,{ type:'bar', data:{ labels:['Jan','Feb','Mar','Apr','Mei','Jun'], datasets:[{ label:'Pekerjaan', data:[65,59,80,81,56,89], backgroundColor: info }, { label:'Temuan', data:[28,48,40,19,36,42], backgroundColor: warn }] }, options:{ responsive:true, maintainAspectRatio:false, scales:{ y:{ beginAtZero:true, ticks:{ color: mut }, grid:{ color: cssVar('--border') } }, x:{ ticks:{ color: mut }, grid:{ display:false } } }, plugins:{ legend:{ labels:{ color: mut } } } } });
+      const kctx = document.getElementById('chartKKM').getContext('2d'); 
+      chartKKM = new Chart(kctx,{ type:'bar', data:{ labels:['Jan','Feb','Mar','Apr','Mei','Jun'], 
+      datasets:[{ label:'Pekerjaan', data:[65,59,80,81,56,89], 
+      backgroundColor: info }, { label:'Temuan', data:[28,48,40,19,36,42], backgroundColor: warn }] }, 
+      options:{ responsive:true, maintainAspectRatio:false, 
+      scales:{ y:{ beginAtZero:true, ticks:{ color: mut }, 
+      grid:{ color: cssVar('--border') } }, x:{ 
+      ticks:{ color: mut }, grid:{ display:false } } }, 
+      plugins:{ legend:{ labels:{ color: mut 
+      } } } } });
       // Monitoring
-      const mctx = document.getElementById('chartMon').getContext('2d'); chartMon = new Chart(mctx,{ type:'pie', data:{ labels:['Quality Check','Performance','Compliance','Others'], datasets:[{ data:[40,25,20,15], backgroundColor:[info, succ, warn, p], borderWidth:0 }] }, options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:'bottom', labels:{ color: mut } } } } });
+      const mctx = document.getElementById('chartMon').getContext('2d'); 
+      chartMon = new Chart(mctx,{ type:'pie', data:{ labels:['Quality Check','Performance','Compliance','Others'], 
+      datasets:[{ data:[40,25,20,15], 
+      backgroundColor:[info, succ, warn, p], borderWidth:0 }] }, 
+      options:{ responsive:true, maintainAspectRatio:false, 
+      plugins:{ legend:{ position:'bottom', labels:{ color: mut 
+      } } } } });
     }
 
     // ================= KKM logic (merged) =================
     const LS_KEY = 'kkm_data_v2';
     let kkmData = JSON.parse(localStorage.getItem(LS_KEY) || '[]');
-    if (kkmData.length === 0) { kkmData = [ { foto: 'https://randomuser.me/api/portraits/men/32.jpg', nama: 'Bryan Williams', pekerjaan: 15, temuan: 3 }, { foto: 'https://randomuser.me/api/portraits/women/44.jpg', nama: 'Sarah Johnson', pekerjaan: 20, temuan: 5 }, { foto: '', nama: 'Michael Brown', pekerjaan: 12, temuan: 2 }, { foto: 'https://randomuser.me/api/portraits/men/22.jpg', nama: 'David Miller', pekerjaan: 18, temuan: 4 }, { foto: 'https://randomuser.me/api/portraits/women/33.jpg', nama: 'Jennifer Davis', pekerjaan: 22, temuan: 3 } ]; saveLS(); }
+    if (kkmData.length === 0) { 
+    kkmData = [ { foto: 'https://randomuser.me/api/portraits/men/32.jpg', 
+    nama: 'Bryan Williams', 
+    pekerjaan: 15, 
+    temuan: 3 }, { foto: 'https://randomuser.me/api/portraits/women/44.jpg', 
+    nama: 'Sarah Johnson', pekerjaan: 20, temuan: 5 }, { foto: '', 
+    nama: 'Michael Brown', pekerjaan: 12, temuan: 2 }, { foto: 'https://randomuser.me/api/portraits/men/22.jpg', 
+    nama: 'David Miller', pekerjaan: 18, temuan: 4 }, { foto: 'https://randomuser.me/api/portraits/women/33.jpg', 
+    nama: 'Jennifer Davis', pekerjaan: 22, temuan: 3 } ]; saveLS(); }
     function saveLS(){ localStorage.setItem(LS_KEY, JSON.stringify(kkmData)); updateStats(); }
-    function updateStats(){ document.getElementById('totalKaryawan').textContent = kkmData.length; const totalPekerjaan = kkmData.reduce((s,i)=>s+i.pekerjaan,0); const avgPekerjaan = kkmData.length>0 ? (totalPekerjaan/kkmData.length).toFixed(1) : 0; document.getElementById('avgPekerjaan').textContent = avgPekerjaan; const totalTemuan = kkmData.reduce((s,i)=>s+i.temuan,0); const avgTemuan = kkmData.length>0 ? (totalTemuan/kkmData.length).toFixed(1) : 0; document.getElementById('avgTemuan').textContent = avgTemuan; const rasio = totalPekerjaan>0 ? ((totalTemuan/totalPekerjaan)*100).toFixed(1) : 0; document.getElementById('rasioTemuan').textContent = `${rasio}%`; }
-    function renderTable(){ const tbody=document.getElementById('tableBody'); tbody.innerHTML=''; kkmData.forEach((r,i)=>{ const tr=document.createElement('tr'); const rasio = r.pekerjaan>0 ? ((r.temuan/r.pekerjaan)*100).toFixed(2) : 0; tr.innerHTML = `<td>${r.foto?`<img src="${r.foto}" alt="${r.nama}" class="avatar"/>`:`<div class="placeholder-avatar"><i class="fa-solid fa-user"></i></div>`}</td><td contenteditable="true" onblur="editCell(${i},'nama',this.innerText)">${r.nama}</td><td contenteditable="true" onblur="editNumber(${i},'pekerjaan',this.innerText)">${r.pekerjaan}</td><td contenteditable="true" onblur="editNumber(${i},'temuan',this.innerText)">${r.temuan}</td><td>${rasio}%</td><td><button class="btn primary" onclick="prefill(${i})"><i class="fa-solid fa-edit"></i></button> <button class="btn secondary" onclick="hapus(${i})"><i class="fa-solid fa-trash"></i></button></td>`; tbody.appendChild(tr); }); updateStats(); drawKkmChart(); }
-    function tambahKaryawan(){ const foto=document.getElementById('fotoUrl').value.trim(); const nama=document.getElementById('namaKaryawan').value.trim(); const pekerjaan=Number(document.getElementById('totalPekerjaan').value||0); const temuan=Number(document.getElementById('totalTemuan').value||0); if(!nama){ showToast('Nama wajib diisi','error'); return; } const idx = kkmData.findIndex(x=>x.nama.toLowerCase()===nama.toLowerCase()); if(idx>=0){ kkmData[idx]={ foto: foto||kkmData[idx].foto, nama, pekerjaan, temuan }; showToast(`Data ${nama} berhasil diperbarui`,'success'); } else { kkmData.push({ foto, nama, pekerjaan, temuan }); showToast(`Data ${nama} berhasil ditambahkan`,'success'); } saveLS(); clearForm(); renderTable(); }
-    function clearForm(){ ['fotoUrl','namaKaryawan','totalPekerjaan','totalTemuan'].forEach(id=>document.getElementById(id).value=''); }
-    function prefill(i){ const r=kkmData[i]; document.getElementById('fotoUrl').value=r.foto||''; document.getElementById('namaKaryawan').value=r.nama; document.getElementById('totalPekerjaan').value=r.pekerjaan; document.getElementById('totalTemuan').value=r.temuan; window.scrollTo({top:0,behavior:'smooth'}); }
-    function hapus(i){ if(!confirm('Hapus data ini?')) return; const nama=kkmData[i].nama; kkmData.splice(i,1); saveLS(); renderTable(); showToast(`Data ${nama} berhasil dihapus`,'success'); }
+    function updateStats()
+    { document.getElementById('totalKaryawan').
+    textContent = 
+    kkmData.length; const totalPekerjaan = 
+    kkmData.reduce((s,i)=>s+i.pekerjaan,0); const avgPekerjaan = 
+    kkmData.length>0 ? (totalPekerjaan/kkmData.length).toFixed(1) : 0; 
+    document.getElementById('avgPekerjaan').textContent = avgPekerjaan; const totalTemuan = 
+    kkmData.reduce((s,i)=>s+i.temuan,0); const avgTemuan = 
+    kkmData.length>0 ? (totalTemuan/kkmData.length).toFixed(1) : 0; document.getElementById('avgTemuan').textContent = avgTemuan; const rasio = totalPekerjaan>0 ? ((totalTemuan/totalPekerjaan)*100).toFixed(1) : 0; document.getElementById('rasioTemuan').textContent = `${rasio}%`; }
+    
+    function renderTable(){ const tbody=
+      document.getElementById('tableBody'); tbody.innerHTML=''; 
+      kkmData.forEach((r,i)=>{ const tr=
+        document.createElement('tr'); const rasio = r.pekerjaan>0 ? ((r.temuan/r.pekerjaan)*100).toFixed(2) : 0;
+ tr.innerHTML = `<td>${r.foto?`<img src="${r.foto}" alt="${r.nama}" class="avatar"/>`:`<div class="placeholder-avatar"><i class="fa-solid fa-user"></i></div>`}</td><td contenteditable="true" onblur="editCell(${i},'nama',this.innerText)">${r.nama}</td><td contenteditable="true" onblur="editNumber(${i},'pekerjaan',this.innerText)">${r.pekerjaan}</td><td contenteditable="true" onblur="editNumber(${i},'temuan',this.innerText)">${r.temuan}</td><td>${rasio}%</td><td><button class="btn primary" onclick="prefill(${i})"><i class="fa-solid fa-edit"></i></button> <button class="btn secondary" onclick="hapus(${i})"><i class="fa-solid fa-trash"></i></button></td>`; tbody.appendChild(tr); }); updateStats(); drawKkmChart(); }
+    
+ function tambahKaryawan(){ 
+      const foto=document.getElementById('fotoUrl').
+      value.trim(); const 
+      nama=document.getElementById('namaKaryawan').
+      value.trim(); const pekerjaan=Number(document.getElementById('totalPekerjaan').value||0); const 
+      temuan=Number(document.getElementById('totalTemuan').value||0); if(!nama){ showToast('Nama wajib diisi','error'); return; } const idx = 
+      kkmData.findIndex(x=>x.nama.toLowerCase()===nama.toLowerCase()); if(idx>=0){ kkmData[idx]={ foto: foto||kkmData[idx].foto, nama, pekerjaan, temuan }; showToast(`Data ${nama} berhasil diperbarui`,'success'); } else { kkmData.push({ foto, nama, pekerjaan, temuan }); showToast(`Data ${nama} berhasil ditambahkan`,'success'); } saveLS(); clearForm(); renderTable(); }
+    
+      function clearForm(){ 
+      ['fotoUrl','namaKaryawan','totalPekerjaan','totalTemuan'].
+      forEach(id=>document.getElementById(id).value=''); }
+    
+      function prefill(i){ const r=kkmData[i]; 
+        document.getElementById('fotoUrl').
+        value=r.foto||''; 
+        document.getElementById('namaKaryawan').value=r.nama; 
+        document.getElementById('totalPekerjaan').value=r.pekerjaan; 
+        document.getElementById('totalTemuan').value=r.temuan; 
+        window.scrollTo({top:0,behavior:'smooth'}); 
+      }
+    
+      function hapus(i){ 
+        if(!confirm('Hapus data ini?')) return; const nama=kkmData[i].
+        nama; kkmData.splice(i,1); saveLS(); renderTable(); showToast(`Data ${nama} berhasil dihapus`,'success'); 
+      }
+      
     function editCell(i,key,val){ kkmData[i][key]=val.trim(); saveLS(); drawKkmChart(); }
-    function editNumber(i,key,val){ const num=Number(val); if(Number.isNaN(num)){ showToast('Masukkan angka yang valid','error'); renderTable(); return; } kkmData[i][key]=num; saveLS(); drawKkmChart(); }
-    function resetData(){ if(!confirm('Reset semua data ke default?')) return; kkmData=[]; saveLS(); location.reload(); }
-    function searchTable(){ const input=document.getElementById('searchInput'); const filter=input.value.toLowerCase(); const rows=document.getElementById('tableBody').getElementsByTagName('tr'); for(let i=0;i<rows.length;i++){ const nameCell=rows[i].getElementsByTagName('td')[1]; if(nameCell){ const name = nameCell.textContent||nameCell.innerText; rows[i].style.display = name.toLowerCase().indexOf(filter) > -1 ? '' : 'none'; } } }
-    function exportTableToExcel(){ try{ const wb=XLSX.utils.book_new(); const ws=XLSX.utils.json_to_sheet(kkmData.map(item=>({ 'Nama Karyawan': item.nama, 'Total Pekerjaan': item.pekerjaan, 'Total Temuan': item.temuan, 'Foto': item.foto||'' }))); XLSX.utils.book_append_sheet(wb, ws, 'KKM Data'); XLSX.writeFile(wb, 'KKM_Report.xlsx'); showToast('Data berhasil diexport ke Excel','success'); }catch(err){ showToast('Error saat mengexport data','error'); console.error(err); } }
-    function importFromExcel(evt){ const file=evt.target.files[0]; if(!file) return; const reader=new FileReader(); reader.onload=(e)=>{ try{ const wb=XLSX.read(e.target.result,{type:'binary'}); const ws=wb.Sheets[wb.SheetNames[0]]; const json=XLSX.utils.sheet_to_json(ws); kkmData = json.map(r=>({ foto: r.Foto||r.foto||'', nama: r['Nama Karyawan']||r.nama||'', pekerjaan: Number(r['Total Pekerjaan']||r.pekerjaan||0), temuan: Number(r['Total Temuan']||r.temuan||0) })).filter(r=>r.nama); saveLS(); renderTable(); showToast('Data berhasil diimport dari Excel','success'); }catch(err){ showToast('Error saat mengimport data','error'); console.error(err); } }; reader.readAsBinaryString(file); }
-    function drawKkmChart(){ const ctx=document.getElementById('kkmChart'); const labels=kkmData.map(x=>x.nama); const pekerjaan=kkmData.map(x=>x.pekerjaan); const temuan=kkmData.map(x=>x.temuan); if(kkmChart) kkmChart.destroy(); kkmChart = new Chart(ctx,{ type:'bar', data:{ labels, datasets:[ { label:'Total Pekerjaan', data:pekerjaan, backgroundColor: '#4299e1' }, { label:'Total Temuan', data:temuan, backgroundColor: '#ecc94b' } ] }, options:{ responsive:true, maintainAspectRatio:false, scales:{ y:{ beginAtZero:true } } } }); }
+    
+    function editNumber(i,key,val){ 
+      const num=Number(val); if(Number.isNaN(num)){ showToast('Masukkan angka yang valid','error'); 
+      renderTable(); return; } 
+      kkmData[i][key]=num; saveLS(); drawKkmChart(); 
+    }
+    function resetData(){ 
+      if(!confirm('Reset semua data ke default?')) return; kkmData=[]; saveLS(); location.reload(); 
+    }
+    function searchTable(){ 
+      const input=document.getElementById('searchInput'); const filter=input.
+      value.toLowerCase(); const rows=document.getElementById('tableBody').getElementsByTagName('tr'); for(let i=0;i<rows.length;i++){ const nameCell=rows[i].getElementsByTagName('td')[1]; if(nameCell){ const name = nameCell.textContent||nameCell.innerText; rows[i].style.display = name.toLowerCase().indexOf(filter) > -1 ? '' : 'none'; } } 
+    }
+    function exportTableToExcel(){ 
+      try{ const wb=XLSX.utils.book_new(); const ws=XLSX.utils.json_to_sheet(
+        kkmData.map(item=>({ 'Nama Karyawan': 
+        item.nama, 'Total Pekerjaan': 
+        item.pekerjaan, 'Total Temuan': 
+        item.temuan, 'Foto': 
+        item.foto||'' 
+      }))); XLSX.utils.book_append_sheet(wb, ws, 'KKM Data'); XLSX.writeFile(wb, 'KKM_Report.xlsx'); showToast('Data berhasil diexport ke Excel','success'); }catch(err){ showToast('Error saat mengexport data','error'); console.error(err); } 
+    }
+    function importFromExcel(evt){ 
+      const file=evt.target.files[0]; 
+      if(!file) return; const reader=new FileReader(); 
+      reader.onload=(e)=>{ 
+        try{ const wb=XLSX.read(e.target.result,{type:'binary'}); 
+        const ws=wb.Sheets[wb.SheetNames[0]]; 
+        const json=XLSX.utils.sheet_to_json(ws); 
+        kkmData = json.map(r=>({ foto: r.Foto||r.foto||'', 
+        nama: r['Nama Karyawan']||r.nama||'', 
+        pekerjaan: Number(r['Total Pekerjaan']||r.pekerjaan||0), 
+        temuan: Number(r['Total Temuan']||r.temuan||0) })).filter(r=>r.nama); saveLS(); renderTable(); showToast('Data berhasil diimport dari Excel','success'); }catch(err){ showToast('Error saat mengimport data','error'); console.error(err); } }; reader.readAsBinaryString(file); 
+      }
+    function drawKkmChart(){ 
+      const ctx=document.getElementById('kkmChart'); 
+      const labels=kkmData.map(x=>x.nama); 
+      const pekerjaan=kkmData.map(x=>x.pekerjaan); 
+      const temuan=kkmData.map(x=>x.temuan); 
+      if(kkmChart) kkmChart.destroy(); kkmChart = new Chart(ctx,{ type:'bar', data:{ labels, datasets:[ { label:'Total Pekerjaan', data:pekerjaan, backgroundColor: '#4299e1' }, { label:'Total Temuan', data:temuan, backgroundColor: '#ecc94b' } ] }, options:{ responsive:true, maintainAspectRatio:false, scales:{ y:{ beginAtZero:true } } } }); }
 
-    // BERITA ACARA (form + PDF)
+
+
+     //Control ticket
+  let ticketId = 3; // karena dummy data sudah ada ID 1 dan 2
+
+  function tambahTicket() {
+    const nama = document.querySelector("#ticket input[type=text]").value.trim();
+    const status = document.querySelector("#ticket select").value;
+
+    if (!nama || status === "Status") {
+      alert("Harap isi nama customer dan pilih status!");
+      return;
+    }
+
+    const tbody = document.querySelector("#ticket table tbody");
+
+    // buat baris baru
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${ticketId++}</td>
+      <td>${nama}</td>
+      <td>${status}</td>
+    `;
+
+    tbody.appendChild(tr);
+
+    // reset input
+    document.querySelector("#ticket input[type=text]").value = "";
+    document.querySelector("#ticket select").value = "Status";
+  }
+
+
+    // ================= MONITORING INDIHOME =================
+
+// Data laporan disimpan di array
+let laporanData = [];
+
+// Chart instance (biar bisa diupdate ulang)
+let monitoringChart;
+
+// Tambah laporan baru
+function tambahLaporan() {
+  const nama = document.getElementById("namaCs").value.trim();
+  const jenis = document.getElementById("laporan").value;
+  const masalah = document.getElementById("masalah").value.trim();
+  const catatan = document.getElementById("catatan").value.trim();
+
+  if (!nama || !masalah) {
+    alert("Nama CS dan Masalah wajib diisi!");
+    return;
+  }
+
+  const newData = {
+    id: Date.now(),
+    nama,
+    jenis,
+    masalah,
+    catatan,
+    tanggal: new Date().toLocaleDateString("id-ID", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric"
+    })
+  };
+
+  laporanData.push(newData);
+  updateTable();
+  updateStats();
+  updateChart();
+
+  // Reset form
+  document.getElementById("namaCs").value = "";
+  document.getElementById("masalah").value = "";
+  document.getElementById("catatan").value = "";
+}
+
+// Update tabel
+function updateTable(filteredData = laporanData) {
+  const tbody = document.getElementById("laporanList");
+  tbody.innerHTML = "";
+
+  filteredData.forEach((laporan, index) => {
+    const row = `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${laporan.nama}</td>
+        <td>${laporan.jenis}</td>
+        <td>${laporan.masalah}</td>
+        <td>${laporan.catatan || "-"}</td>
+        <td>${laporan.tanggal}</td>
+        <td>
+          <button onclick="hapusLaporan(${laporan.id})">
+            <i class="fas fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    `;
+    tbody.innerHTML += row;
+  });
+}
+
+// Hapus laporan
+function hapusLaporan(id) {
+  laporanData = laporanData.filter(l => l.id !== id);
+  updateTable();
+  updateStats();
+  updateChart();
+}
+
+// Update statistik (cards)
+function updateStats() {
+  const total = laporanData.length;
+  const totalAO = laporanData.filter(l => l.jenis === "AO").length;
+  const totalMO = laporanData.filter(l => l.jenis === "MO").length;
+  const avg = total > 0 ? (total / new Set(laporanData.map(l => l.nama)).size).toFixed(1) : 0;
+
+  document.getElementById("totalLaporan").textContent = total;
+  document.getElementById("totalAO").textContent = totalAO;
+  document.getElementById("totalMO").textContent = totalMO;
+  document.getElementById("avgPerCS").textContent = avg;
+}
+
+// Search tabel
+function searchTable() {
+  const query = document.getElementById("searchMonitoring").value.toLowerCase();
+  const category = document.getElementById("searchCategory").value;
+
+  const filtered = laporanData.filter(l => {
+    if (category === "nama") return l.nama.toLowerCase().includes(query);
+    if (category === "masalah") return l.masalah.toLowerCase().includes(query);
+    if (category === "catatan") return l.catatan.toLowerCase().includes(query);
+    return (
+      l.nama.toLowerCase().includes(query) ||
+      l.masalah.toLowerCase().includes(query) ||
+      (l.catatan && l.catatan.toLowerCase().includes(query))
+    );
+  });
+
+  updateTable(filtered);
+}
+
+// Filter berdasarkan jenis laporan
+function applyFilter() {
+  const filter = document.getElementById("filterJenis").value;
+  const filtered = filter ? laporanData.filter(l => l.jenis === filter) : laporanData;
+  updateTable(filtered);
+}
+
+// Reset semua data
+function resetMonitoring() {
+  if (!confirm("Yakin ingin reset semua data monitoring?")) return;
+  laporanData = [];
+  updateTable();
+  updateStats();
+  updateChart();
+}
+
+// Export tabel ke Excel (sederhana, CSV)
+function exportTableToExcel() {
+  let csv = "No,Nama CS,Jenis Laporan,Masalah,Catatan,Tanggal\n";
+  laporanData.forEach((l, i) => {
+    csv += `${i + 1},"${l.nama}","${l.jenis}","${l.masalah}","${l.catatan}","${l.tanggal}"\n`;
+  });
+
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "monitoring_indihome.csv";
+  link.click();
+}
+
+// Import Excel (CSV sederhana)
+function importMonitoringExcel(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const rows = e.target.result.split("\n").slice(1);
+    rows.forEach(r => {
+      const cols = r.split(",");
+      if (cols.length >= 6) {
+        laporanData.push({
+          id: Date.now() + Math.random(),
+          nama: cols[1]?.replace(/"/g, "").trim(),
+          jenis: cols[2]?.replace(/"/g, "").trim(),
+          masalah: cols[3]?.replace(/"/g, "").trim(),
+          catatan: cols[4]?.replace(/"/g, "").trim(),
+          tanggal: cols[5]?.trim()
+        });
+      }
+    });
+    updateTable();
+    updateStats();
+    updateChart();
+  };
+  reader.readAsText(file);
+}
+
+// Chart distribusi laporan
+function updateChart() {
+  const ctx = document.getElementById("monitoringChart").getContext("2d");
+
+  const jenisLaporan = ["AO", "MO", "SO", "RO", "DO"];
+  const counts = jenisLaporan.map(j => laporanData.filter(l => l.jenis === j).length);
+
+  if (monitoringChart) monitoringChart.destroy();
+
+  monitoringChart = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: jenisLaporan,
+      datasets: [{
+        data: counts,
+        backgroundColor: ["#3498db", "#e67e22", "#e74c3c", "#2ecc71", "#9b59b6"]
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "bottom" }
+      }
+    }
+  });
+}
+
+// Fullscreen chart
+function showFullScreenChart() {
+  const win = window.open("", "_blank");
+  win.document.write("<html><head><title>Chart Laporan</title></head><body>");
+  win.document.write('<canvas id="fullChart" style="width:100%;height:100vh;"></canvas>');
+  win.document.write("</body></html>");
+
+  win.onload = () => {
+    const ctx = win.document.getElementById("fullChart").getContext("2d");
+    new Chart(ctx, {
+      type: "bar",
+      data: monitoringChart.data,
+      options: { responsive: true, plugins: { legend: { position: "top" } } }
+    });
+  };
+}
+
+
+      // BERITA ACARA (form + PDF)
     const form = document.getElementById('reactivationForm'); const previewBtn = document.getElementById('previewBtn'); const generateBtn = document.getElementById('generatePdfBtn'); const downloadBtn = document.getElementById('downloadPdfBtn');
     function validateForm(){ let ok = form.checkValidity(); form.querySelectorAll('input[required]').forEach(inp=>{ if(!inp.checkValidity()) inp.style.borderColor='var(--danger)'; else inp.style.borderColor='var(--border)'; }); if(!ok) showToast('Harap isi semua field dengan format yang benar.','error'); return ok; }
     function fileName(id){ const f=document.getElementById(id); return f.files && f.files[0] ? f.files[0].name : 'Tidak ada file'; }
@@ -480,7 +1443,7 @@
     window.addEventListener('DOMContentLoaded', ()=>{ initCharts(); renderTable(); showToast('Sistem siap — selamat bekerja!','success'); });
 
     function showUserMenu(){ showToast('Menu user diklik','info'); }
+
   </script>
 </body>
 </html>
-
